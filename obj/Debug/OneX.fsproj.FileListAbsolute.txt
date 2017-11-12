@@ -1,0 +1,16 @@
+D:\git\OneX\OneX\bin\Debug\OneX.exe.config
+D:\git\OneX\OneX\bin\Debug\OneX.XML
+D:\git\OneX\OneX\bin\Debug\OneX.exe
+D:\git\OneX\OneX\bin\Debug\OneX.pdb
+D:\git\OneX\OneX\bin\Debug\FSharp.Core.dll
+D:\git\OneX\OneX\bin\Debug\FSharp.Data.dll
+D:\git\OneX\OneX\bin\Debug\System.ValueTuple.dll
+D:\git\OneX\OneX\bin\Debug\FSharp.Data.pdb
+D:\git\OneX\OneX\bin\Debug\FSharp.Data.xml
+D:\git\OneX\OneX\bin\Debug\FSharp.Core.xml
+D:\git\OneX\OneX\bin\Debug\ru\FSharp.Core.resources.dll
+D:\git\OneX\OneX\obj\Debug\OneX.fsproj.OneX.exe.config
+D:\git\OneX\OneX\obj\Debug\OneX.fsproj.CoreCompileInputs.cache
+D:\git\OneX\OneX\obj\Debug\OneX.exe
+D:\git\OneX\OneX\obj\Debug\OneX.pdb
+D:\git\OneX\OneX\obj\Debug\OneX.fsprojResolveAssemblyReference.cache
