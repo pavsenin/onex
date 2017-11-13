@@ -3,7 +3,10 @@ open System
 open System.IO
 open FSharp.Data
 open FSharp.Data.JsonExtensions
-open FSharp.Data.HtmlAttribute
+open Newtonsoft.Json.FSharp
+open Newtonsoft.Json
+open System.Text
+
 
 let inline (|>>) x f = x |> Option.map f
 let inline (|?) def arg = defaultArg arg def
@@ -47,6 +50,30 @@ type CoefType =
     | IT1L of float
     | IT2G of float
     | IT2L of float
+    
+type TreeItemViewModel = { text : string; children : string list }
+
+let betTypeToString = function
+    | P1 -> "Победа1" 
+    | X  -> "Ничья"
+    | P2 -> "Победа2"
+    | D1X -> "Победа1+Ничья"
+    | D12 -> "Победа1+Победа2"
+    | DX2 -> "Ничья+Победа2"
+    | TG param -> sprintf "Тотал Больше(%f)" param
+    | TL param -> sprintf "Тотал Меньше(%f)" param
+    | IT1G param -> sprintf "Инд.Тотал1 Больше(%f)" param
+    | IT1L param -> sprintf "Инд.Тотал1 Меньше(%f)" param
+    | IT2G param -> sprintf "Инд.Тотал2 Больше(%f)" param
+    | IT2L param -> sprintf "Инд.Тотал2 Меньше(%f)" param
+    | _ -> "Неизвестно"
+let toBetViewModel betType bet =
+    sprintf "%s : %f" (betTypeToString betType) bet
+
+let toMatchViewModel (_, name1, name2, time, bets) =
+    let title = sprintf "%s - %s (%A)" name1 name2 time
+    let children = bets |> List.map (fun (betType, bet) -> toBetViewModel betType bet)
+    { text = title; children = children }
 
 let toCoefType param _type =
     let toCoef v = map (fun f -> v f) Un
@@ -92,10 +119,14 @@ let main argv =
                         | Un -> None
                         | _ -> Some (coefType, coef)
                     )
+                    |> Array.toList
                 (id, name1, name2, time, coefs)
             )
-        let filePath = "output.txt"
-        use sw = new StreamWriter(path=filePath)
-        matches |> Array.iter (fun m -> fprintfn sw "%A" m)
-        Console.ReadLine() |> ignore
+            |> Array.toList
+        let viewModels = matches |> List.map toMatchViewModel
+        let serialized = JsonConvert.SerializeObject(viewModels)
+        let corrected = sprintf "var json_data = %s;" serialized
+        let filePath = "data.js"
+        use sw = new StreamWriter(path=filePath, append=false, encoding=Encoding.UTF8)
+        sw.Write(corrected)
         0
