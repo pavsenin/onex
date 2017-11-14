@@ -12,8 +12,11 @@ let inline (|>>) x f = x |> Option.map f
 let inline (|?) def arg = defaultArg arg def
 let inline map f d = function | Some v -> f v | None -> d
 
-let rfpl = "Russia-Premier-League"
-let champsIds = dict[rfpl, 225733]
+let chl, eul, rfpl, apl, bundes, primera, serieA, fl1 =
+    "UEFA-Champions-League", "UEFA-Europa-League", "Russia-Premier-League", "England-Premier-League",
+    "Germany-Bundesliga", "Spain-Primera-Divisin", "Italy-Serie-A", "France-Ligue-1"
+let champs =
+    [chl, 118587; eul, 118593; rfpl, 225733; apl, 88637; bundes, 96463; primera, 127733; serieA, 110163; fl1, 12821]
 
 let buildLigaUrl id =
     """https://1xstavka.ru/LineFeed/Get1x2_Zip?champs=""" +
@@ -23,10 +26,7 @@ let buildMatchUrl id =
     """https://1xstavka.ru/LineFeed/GetGameZip?id=""" +
     id.ToString() +
     """&lng=ru&cfview=0&isSubGames=true&GroupEvents=true&countevents=250&partner=51&grMode=2"""
-let getUrl name =
-    match champsIds.TryGetValue name with
-    | true, id -> Some (buildLigaUrl id)
-    | _ -> None
+let getUrl id = buildLigaUrl id
 let fetchContent url =
     let req = url |> Uri |> WebRequest.Create
     use resp = req.GetResponse()
@@ -40,7 +40,7 @@ let fromUnixTimestamp secs =
     TimeZoneInfo.ConvertTime(time, zone)
 let asF (jsonValue:JsonValue) = jsonValue.AsFloat()
 
-type CoefType =
+type BetType =
     | Un
     | P1 | X | P2 
     | D1X | D12 | DX2
@@ -51,7 +51,7 @@ type CoefType =
     | IT2G of float
     | IT2L of float
     
-type TreeItemViewModel = { text : string; children : string list }
+type TreeItemViewModel = { text : string; children : TreeItemViewModel list }
 
 let betTypeToString = function
     | P1 -> "Победа1" 
@@ -68,65 +68,74 @@ let betTypeToString = function
     | IT2L param -> sprintf "Инд.Тотал2 Меньше(%f)" param
     | _ -> "Неизвестно"
 let toBetViewModel betType bet =
-    sprintf "%s : %f" (betTypeToString betType) bet
+    let title = sprintf "%s : %f" (betTypeToString betType) bet
+    { text = title; children = [] }
 
 let toMatchViewModel (_, name1, name2, time, bets) =
     let title = sprintf "%s - %s (%A)" name1 name2 time
     let children = bets |> List.map (fun (betType, bet) -> toBetViewModel betType bet)
     { text = title; children = children }
 
-let toCoefType param _type =
-    let toCoef v = map (fun f -> v f) Un
+let toLeagueViewModel name matches =
+    { text = name; children = matches }
+
+let toBetType param _type =
+    let toBet v = map (fun f -> v f) Un
     match _type with
     | 1 -> P1 | 2 -> X | 3 -> P2
     | 4 -> D1X | 5 -> D12 | 6 -> DX2
-    | 9 -> toCoef TG param | 10 -> toCoef TL param
-    | 11 -> toCoef IT1G param | 12 -> toCoef IT1L param
-    | 13 -> toCoef IT2G param | 14 -> toCoef IT2L param
+    | 9 -> toBet TG param | 10 -> toBet TL param
+    | 11 -> toBet IT1G param | 12 -> toBet IT1L param
+    | 13 -> toBet IT2G param | 14 -> toBet IT2L param
     | _ -> Un
+
+let getBet k =
+    let bet = k?C.AsFloat()
+    let _type = k?T.AsInteger()
+    let param = k.TryGetProperty("P") |>> asF
+    let betType = toBetType param _type
+    match betType with
+    | Un -> None
+    | _ -> Some (betType, bet)
+let getMatch m =
+    let id = m?CI.AsInteger()
+    let name1 = m?O1.AsString()
+    let name2 = m?O2.AsString()
+    let seconds = m?S.AsFloat()
+    let time = fromUnixTimestamp seconds
+    let jsonContent =
+        id
+        |> buildMatchUrl
+        |> fetchContent
+        |> JsonValue.Parse
+    let bets =
+        jsonContent?Value?E.AsArray()
+        |> Array.choose getBet
+        |> Array.toList
+    (id, name1, name2, time, bets)
+
+let getMatches json =
+    json?Value.AsArray()
+    |> Array.map getMatch
+    |> Array.toList
+    |> List.map toMatchViewModel
+
+let getLeague (name, id) =
+    id
+    |> getUrl
+    |> fetchContent
+    |> JsonValue.Parse
+    |> getMatches
+    |> toLeagueViewModel name
+
 
 [<EntryPoint>]
 let main argv =
-    let jsonContent =
-        rfpl
-        |> getUrl
-        |>> fetchContent
-        |>> JsonValue.Parse
-    match jsonContent with
-    | None -> 0
-    | Some json ->
-        let matches = 
-            json?Value.AsArray()
-            |> Array.map (fun m ->
-                let id = m?CI.AsInteger()
-                let name1 = m?O1.AsString()
-                let name2 = m?O2.AsString()
-                let seconds = m?S.AsFloat()
-                let time = fromUnixTimestamp seconds
-                let jsonContent =
-                    id
-                    |> buildMatchUrl
-                    |> fetchContent
-                    |> JsonValue.Parse
-                let coefs =
-                    jsonContent?Value?E.AsArray()
-                    |> Array.choose (fun k ->
-                        let coef = k?C.AsFloat()
-                        let _type = k?T.AsInteger()
-                        let param = k.TryGetProperty("P") |>> asF
-                        let coefType = toCoefType param _type
-                        match coefType with
-                        | Un -> None
-                        | _ -> Some (coefType, coef)
-                    )
-                    |> Array.toList
-                (id, name1, name2, time, coefs)
-            )
-            |> Array.toList
-        let viewModels = matches |> List.map toMatchViewModel
-        let serialized = JsonConvert.SerializeObject(viewModels)
-        let corrected = sprintf "var json_data = %s;" serialized
-        let filePath = "data.js"
-        use sw = new StreamWriter(path=filePath, append=false, encoding=Encoding.UTF8)
-        sw.Write(corrected)
-        0
+    let jsonData = 
+        champs
+        |> List.map getLeague
+        |> JsonConvert.SerializeObject
+        |> sprintf "var json_data = %s;\r\n"
+    use sw = new StreamWriter(path="data.js", append=false, encoding=Encoding.UTF8)
+    sw.Write(jsonData)
+    0
