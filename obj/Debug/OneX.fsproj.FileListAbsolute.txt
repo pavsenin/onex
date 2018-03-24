@@ -52,6 +52,6 @@ d:\git\pavsenin\OneX\bin\Debug\Newtonsoft.Json.xml
 d:\git\pavsenin\OneX\bin\Debug\Newtonsoft.Json.FSharp.xml
 d:\git\pavsenin\OneX\bin\Debug\NodaTime.xml
 d:\git\pavsenin\OneX\obj\Debug\OneX.fsprojResolveAssemblyReference.cache
-d:\git\pavsenin\OneX\obj\Debug\OneX.fsproj.OneX.exe.config
 d:\git\pavsenin\OneX\obj\Debug\OneX.exe
 d:\git\pavsenin\OneX\obj\Debug\OneX.pdb
+D:\git\pavsenin\OneX\obj\Debug\OneX.exe.config
