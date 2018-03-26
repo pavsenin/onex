@@ -16,7 +16,7 @@ let chl, eul, rfpl, apl, bundes, primera, serieA, fl1 =
     "UEFA-Champions-League", "UEFA-Europa-League", "Russia-Premier-League", "England-Premier-League",
     "Germany-Bundesliga", "Spain-Primera-Divisin", "Italy-Serie-A", "France-Ligue-1"
 let champs =
-    [(*chl, 118587; eul, 118593;*) rfpl, 225733; apl, 88637; bundes, 96463; primera, 127733; serieA, 110163; fl1, 12821]
+    [rfpl, 225733; apl, 88637; bundes, 96463; primera, 127733; serieA, 110163; fl1, 12821; chl, 118587; eul, 118593]
 
 let buildLigaUrl id =
     """https://1xstavka.ru/LineFeed/Get1x2_Zip?champs=""" +
@@ -59,27 +59,27 @@ type GameType =
 type TreeItemViewModel = { text : string; children : TreeItemViewModel list }
 
 let betTypeToString = function
-    | P1 -> "Победа1" 
-    | X  -> "Ничья"
-    | P2 -> "Победа2"
-    | D1X -> "Победа1+Ничья"
-    | D12 -> "Победа1+Победа2"
-    | DX2 -> "Ничья+Победа2"
-    | TG param -> sprintf "Тотал Больше(%f)" param
-    | TL param -> sprintf "Тотал Меньше(%f)" param
-    | IT1G param -> sprintf "Инд.Тотал1 Больше(%f)" param
-    | IT1L param -> sprintf "Инд.Тотал1 Меньше(%f)" param
-    | IT2G param -> sprintf "Инд.Тотал2 Больше(%f)" param
-    | IT2L param -> sprintf "Инд.Тотал2 Меньше(%f)" param
-    | _ -> "Неизвестно"
+    | P1 -> "Win1" 
+    | X  -> "Draw"
+    | P2 -> "Win2"
+    | D1X -> "Win1+Draw"
+    | D12 -> "Win1+Win2"
+    | DX2 -> "Draw+Win2"
+    | TG param -> sprintf "Total Great(%f)" param
+    | TL param -> sprintf "Total Less(%f)" param
+    | IT1G param -> sprintf "IndTotal1 Great(%f)" param
+    | IT1L param -> sprintf "IndTotal1 Less(%f)" param
+    | IT2G param -> sprintf "IndTotal2 Great(%f)" param
+    | IT2L param -> sprintf "IndTotal2 Less(%f)" param
+    | _ -> "Unknown"
 
 let gameTypeToString = function
-    | X12 -> "1X2"
-    | DX12 -> "Двойной шанс"
-    | Total -> "Тотал"
-    | IndTotal1 -> "Инд Тотал 1"
-    | IndTotal2 -> "Инд Тотал 2"
-    | _ -> "Неизвестно"
+    | X12 -> "Outcome"
+    | DX12 -> "DoubleChance"
+    | Total -> "Total"
+    | IndTotal1 -> "IndividualTotal1"
+    | IndTotal2 -> "IndividualTotal2"
+    | _ -> "Unknown"
 
 let toBetViewModel betType bet =
     let title = sprintf "%s : %f" (betTypeToString betType) bet
@@ -90,13 +90,14 @@ let toGameViewModel gameType bets =
     let children = bets |> List.map (fun (betType, bet) -> toBetViewModel betType bet)
     { text = title; children = children }
 
-let toMatchViewModel (_, name1, name2, time, games) =
-    let title = sprintf "%s - %s (%A)" name1 name2 time
+let toMatchViewModel (id, (id1, name1), (id2, name2), time, games) =
+    let title = sprintf "(%d) %s(%d) - %s(%d) (%A)" id name1 id1 name2 id2 time
     let children = games |> List.map (fun (gameType, bets) -> toGameViewModel gameType bets)
     { text = title; children = children }
 
-let toLeagueViewModel name matches =
-    { text = name; children = matches }
+let toLeagueViewModel id name matches =
+    let title = sprintf "(%d) %s" id name
+    { text = title; children = matches }
 
 let toBetType param _type =
     let toBet v = map (fun f -> v f) UnBet
@@ -110,29 +111,37 @@ let toBetType param _type =
 
 let toGameType _type =
     match _type with
-    | 1 -> X12 | _ -> UnGame
+    | 1 -> X12 | 2 -> DX12
+    | 4 -> Total
+    | 5 -> IndTotal1
+    | 6 -> IndTotal2
+    | _ -> UnGame
 
-let getBet bet =
-    let c = bet?C.AsFloat()
-    let _type = bet?T.AsInteger()
-    let param = bet.TryGetProperty("P") |>> asF
-    let betType = toBetType param _type
-    match betType with
-    | UnBet -> None
-    | _ -> Some (betType, c)
+let getBets (bet:JsonValue) =
+    bet.AsArray()
+    |> Array.choose (fun b ->
+        let c = b?C.AsFloat()
+        let _type = b?T.AsInteger()
+        let param = b.TryGetProperty("P") |>> asF
+        match toBetType param _type with
+        | UnBet -> None
+        | betType -> Some (betType, c)
+    )
 
 let getGame k =
-    let e = k?E
-    let gameType = e?G.AsInteger()
-    let bets =
-        e.AsArray()
-        |> Array.map (fun bet ->
-            
-        )
+    let _type = k?G.AsInteger()
+    match toGameType _type with
+    | UnGame -> None
+    | gameType ->
+        let bets =
+            k?E.AsArray()
+            |> Array.collect getBets
+            |> Array.toList
+        Some (gameType, bets)
 let getMatch m =
     let id = m?CI.AsInteger()
-    let name1 = m?O1.AsString()
-    let name2 = m?O2.AsString()
+    let team1 = (m?O1I.AsInteger(), m?O1E.AsString())
+    let team2 = (m?O2I.AsInteger(), m?O2E.AsString())
     let seconds = m?S.AsFloat()
     let time = fromUnixTimestamp seconds
     let jsonContent =
@@ -144,7 +153,7 @@ let getMatch m =
         jsonContent?Value?GE.AsArray()
         |> Array.choose getGame
         |> Array.toList
-    (id, name1, name2, time, games)
+    (id, team1, team2, time, games)
 
 let getMatches json =
     json?Value.AsArray()
@@ -158,8 +167,7 @@ let getLeague (name, id) =
     |> fetchContent
     |> JsonValue.Parse
     |> getMatches
-    |> toLeagueViewModel name
-
+    |> toLeagueViewModel id name
 
 [<EntryPoint>]
 let main argv =
