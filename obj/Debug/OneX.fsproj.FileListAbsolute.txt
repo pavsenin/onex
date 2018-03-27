@@ -75,3 +75,8 @@ C:\git\pavsenin\onex\obj\Debug\OneX.fsprojResolveAssemblyReference.cache
 C:\git\pavsenin\onex\obj\Debug\OneX.fsproj.OneX.exe.config
 C:\git\pavsenin\onex\obj\Debug\OneX.exe
 C:\git\pavsenin\onex\obj\Debug\OneX.pdb
+D:\git\pavsenin\OneX\bin\Debug\System.Net.Http.Extensions.dll
+D:\git\pavsenin\OneX\bin\Debug\System.Net.Http.Primitives.dll
+D:\git\pavsenin\OneX\bin\Debug\System.Net.Http.Extensions.xml
+D:\git\pavsenin\OneX\bin\Debug\System.Net.Http.Primitives.xml
+D:\git\pavsenin\OneX\obj\Debug\OneX.fsproj.App.config

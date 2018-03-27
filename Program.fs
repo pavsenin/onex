@@ -3,9 +3,9 @@ open System
 open System.IO
 open FSharp.Data
 open FSharp.Data.JsonExtensions
-open Newtonsoft.Json.FSharp
 open Newtonsoft.Json
 open System.Text
+open System.Net.Http
 
 
 let inline (|>>) x f = x |> Option.map f
@@ -27,12 +27,15 @@ let buildMatchUrl id =
     id.ToString() +
     """&lng=ru&cfview=0&isSubGames=true&GroupEvents=true&countevents=250&partner=51&grMode=2"""
 let getUrl id = buildLigaUrl id
-let fetchContent url =
+let fetchContent adustRequest url =
     let req = url |> Uri |> WebRequest.Create
+    adustRequest req
     use resp = req.GetResponse()
     use stream = resp.GetResponseStream()
     use reader = new StreamReader(stream)
     reader.ReadToEnd()
+let fetchContentGet = fetchContent (fun _ -> ())
+
 let fromUnixTimestamp secs =
     let origin = new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc)
     let time = origin.AddSeconds secs
@@ -147,7 +150,7 @@ let getMatch m =
     let jsonContent =
         id
         |> buildMatchUrl
-        |> fetchContent
+        |> fetchContentGet
         |> JsonValue.Parse
     let games =
         jsonContent?Value?GE.AsArray()
@@ -164,16 +167,31 @@ let getMatches json =
 let getLeague (name, id) =
     id
     |> getUrl
-    |> fetchContent
+    |> fetchContentGet
     |> JsonValue.Parse
     |> getMatches
     |> toLeagueViewModel id name
 
+let getResults date =
+    let url = "https://1xstavka.ru/getTranslate/ViewGameResultsGroup"
+    let adjustRequest (request:WebRequest) =
+        request.Method <- "POST"
+        let postData = """{"Language":"ru"}{"Params":[""" + date + """, null, null, null, null, 180]}{"Vers":6}{"Adult": false}{"partner":51}"""
+        let byteArray = Encoding.UTF8.GetBytes(postData)
+        request.ContentType <- "application/json"
+        request.ContentLength <- int64(byteArray.Length)
+        use dataStream = request.GetRequestStream()
+        dataStream.Write(byteArray, 0, byteArray.Length)
+    fetchContent adjustRequest url
+
 [<EntryPoint>]
 let main argv =
-    let jsonData = 
-        champs
-        |> List.map getLeague
+    let results = getResults "\"2018-03-17\""
+
+    let leagues = champs |> List.map getLeague
+
+    let jsonData =
+        leagues
         |> JsonConvert.SerializeObject
         |> sprintf "var json_data = %s;\r\n"
     use sw = new StreamWriter(path="data.js", append=false, encoding=Encoding.UTF8)
