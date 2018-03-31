@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>The YamlConfig type provider
+</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Type providers for the configuration of .NET projects.">
+    <meta name="author" content="FSProjects team">
+
+    <script src="https://code.jquery.com/jquery-1.8.0.js"></script>
+    <script src="https://code.jquery.com/ui/1.8.23/jquery-ui.js"></script>
+    <script src="https://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.1/js/bootstrap.min.js"></script>
+    <link href="https://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.1/css/bootstrap-combined.min.css" rel="stylesheet">
+
+    <link type="text/css" rel="stylesheet" href="./content/style.css" />
+    <script type="text/javascript" src="./content/tips.js"></script>
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="https://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="container">
+      <div class="masthead">
+        <ul class="nav nav-pills pull-right">
+          <li><a href="http://fsharp.org">fsharp.org</a></li>
+          <li><a href="http://github.com/fsprojects/FSharp.Configuration">github page</a></li>
+        </ul>
+        <h3 class="muted"><a href="./index.html">FSharp.Configuration</a></h3>
+      </div>
+      <hr />
+      <div class="row">
+        <div class="span9" id="main">
+          
+<h1><a name="The-YamlConfig-type-provider" class="anchor" href="#The-YamlConfig-type-provider">The YamlConfig type provider</a></h1>
+<p>This tutorial shows the use of the YamlConfig type provider.</p>
+<p>It's generated, hence the types can be used from any .NET language, not only from F# code.</p>
+<p>It can produce mutable properties for Yaml scalars (leafs), which means the object tree can be loaded, modified and saved into the original file or a stream as Yaml text. Adding new properties is not supported, however lists can be replaced with new ones atomically. This is intentionally, see below.</p>
+<p>The main purpose for this is to be used as part of a statically typed application configuration system which would have a single master source of configuration structure - a Yaml file. Then any F#/C# project in a solution will able to use the generated read-only object graph.</p>
+<p>When you push a system into production, you can modify the configs with scripts written in F# in safe, statically typed way with full intellisense.</p>
+<h2><a name="Using-Yaml-type-provider-from-F-scripts" class="anchor" href="#Using-Yaml-type-provider-from-F-scripts">Using Yaml type provider from F# scripts</a></h2>
+<p>Create a <code>Config.yaml</code> file like this:</p>
+<table class="pre"><tr><td class="lines"><pre class="fssnip"><span class="l"> 1: </span>
+<span class="l"> 2: </span>
+<span class="l"> 3: </span>
+<span class="l"> 4: </span>
+<span class="l"> 5: </span>
+<span class="l"> 6: </span>
+<span class="l"> 7: </span>
+<span class="l"> 8: </span>
+<span class="l"> 9: </span>
+<span class="l">10: </span>
+<span class="l">11: </span>
+<span class="l">12: </span>
+<span class="l">13: </span>
+<span class="l">14: </span>
+<span class="l">15: </span>
+<span class="l">16: </span>
+<span class="l">17: </span>
+<span class="l">18: </span>
+<span class="l">19: </span>
+<span class="l">20: </span>
+</pre></td>
+<td class="snippet"><pre class="fssnip"><code lang="yaml">Mail:
+    Smtp:
+        Host: smtp.sample.com
+        Port: 25
+        User: user1
+        Password: pass1
+    Pop3:
+        Host: pop3.sample.com
+        Port: 110
+        User: user2
+        Password: pass2
+        CheckPeriod: 00:01:00
+    ErrorNotificationRecipients:
+        - user1@sample.com
+        - user2@sample.com
+    ErrorMessageId: 9d165087-9b74-4313-ab90-89be897d3d93
+DB:
+    ConnectionString: Data Source=server1;Initial Catalog=Database1;Integrated Security=SSPI;
+    NumberOfDeadlockRepeats: 5
+    DefaultTimeout: 00:05:00
+</code></pre></td></tr></table>
+<p>Reference the type provider assembly and configure it to use your yaml file:</p>
+<table class="pre"><tr><td class="lines"><pre class="fssnip"><span class="l">1: </span>
+<span class="l">2: </span>
+<span class="l">3: </span>
+<span class="l">4: </span>
+<span class="l">5: </span>
+<span class="l">6: </span>
+</pre></td>
+<td class="snippet"><pre class="fssnip highlighted"><code lang="fsharp"><span class="prep">#r</span> <span class="s">&quot;FSharp.Configuration.dll&quot;</span>
+<span class="k">open</span> <span class="i">FSharp</span><span class="o">.</span><span class="i">Configuration</span>
+
+<span class="c">// Let the type provider do it&#39;s work</span>
+<span class="k">type</span> <span class="i">TestConfig</span> <span class="o">=</span> <span class="i">YamlConfig</span><span class="o">&lt;</span><span class="s">&quot;Config.yaml&quot;</span><span class="o">&gt;</span>
+<span class="k">let</span> <span class="i">config</span> <span class="o">=</span> <span class="i">TestConfig</span>()
+</code></pre></td>
+</tr>
+</table>
+<p><img src="img/YamlConfigProvider.png" alt="alt text" title="Intellisense for YamlConfig" /></p>
+<h2><a name="Reading-and-writing-from-the-config" class="anchor" href="#Reading-and-writing-from-the-config">Reading and writing from the config</a></h2>
+<table class="pre"><tr><td class="lines"><pre class="fssnip"><span class="l"> 1: </span>
+<span class="l"> 2: </span>
+<span class="l"> 3: </span>
+<span class="l"> 4: </span>
+<span class="l"> 5: </span>
+<span class="l"> 6: </span>
+<span class="l"> 7: </span>
+<span class="l"> 8: </span>
+<span class="l"> 9: </span>
+<span class="l">10: </span>
+<span class="l">11: </span>
+<span class="l">12: </span>
+<span class="l">13: </span>
+</pre></td>
+<td class="snippet"><pre class="fssnip highlighted"><code lang="fsharp"><span class="c">// read a value from the config</span>
+<span class="i">config</span><span class="o">.</span><span class="i">DB</span><span class="o">.</span><span class="i">ConnectionString</span>
+
+<span class="fsi">val it : string = </span>
+<span class="fsi">  &quot;Data Source=server1;Initial Catalog=Database1;Integrated Security=SSPI;&quot;</span>
+
+<span class="c">// change a value in the config</span>
+<span class="i">config</span><span class="o">.</span><span class="i">DB</span><span class="o">.</span><span class="i">ConnectionString</span> <span class="o">&lt;-</span> <span class="s">&quot;Data Source=server2;&quot;</span>
+<span class="i">config</span><span class="o">.</span><span class="i">DB</span><span class="o">.</span><span class="i">ConnectionString</span>
+<span class="fsi">val it : string = &quot;Data Source=server2;&quot;</span>
+
+<span class="c">// write the settings back to a yaml file</span>
+<span class="i">config</span><span class="o">.</span><span class="i">Save</span>(<span class="k">__SOURCE_DIRECTORY__</span> <span class="o">+</span> <span class="s">@&quot;\ChangedConfig.yaml&quot;</span>)
+</code></pre></td>
+</tr>
+</table>
+<h2><a name="Using-configuration-from-C" class="anchor" href="#Using-configuration-from-C">Using configuration from C#</a></h2>
+<p>Let's create a F# project named <code>Config</code>, add reference to <code>FSharp.Configuration.dll</code>, then add the following <code>Config.yaml</code> file:</p>
+<table class="pre"><tr><td class="lines"><pre class="fssnip"><span class="l"> 1: </span>
+<span class="l"> 2: </span>
+<span class="l"> 3: </span>
+<span class="l"> 4: </span>
+<span class="l"> 5: </span>
+<span class="l"> 6: </span>
+<span class="l"> 7: </span>
+<span class="l"> 8: </span>
+<span class="l"> 9: </span>
+<span class="l">10: </span>
+<span class="l">11: </span>
+<span class="l">12: </span>
+<span class="l">13: </span>
+<span class="l">14: </span>
+<span class="l">15: </span>
+<span class="l">16: </span>
+<span class="l">17: </span>
+<span class="l">18: </span>
+<span class="l">19: </span>
+<span class="l">20: </span>
+</pre></td>
+<td class="snippet"><pre class="fssnip"><code lang="yaml">Mail:
+  Smtp:
+    Host: smtp.sample.com
+    Port: 25
+    User: user1
+    Password: pass1
+  Pop3:
+    Host: pop3.sample.com
+    Port: 110
+    User: user2
+    Password: pass2
+    CheckPeriod: 00:01:00
+  ErrorNotificationRecipients:
+    - user1@sample.com
+    - user2@sample.com
+  ErrorMessageId: 9d165087-9b74-4313-ab90-89be897d3d93
+DB:
+  ConnectionString: Data Source=server1;Initial Catalog=Database1;Integrated Security=SSPI;
+  NumberOfDeadlockRepeats: 5
+  DefaultTimeout: 00:05:00
+</code></pre></td></tr></table>
+<p>Declare a YamlConfig type and point it to the file above:</p>
+<table class="pre"><tr><td class="lines"><pre class="fssnip"><span class="l">1: </span>
+<span class="l">2: </span>
+<span class="l">3: </span>
+</pre></td>
+<td class="snippet"><pre class="fssnip highlighted"><code lang="fsharp"><span class="k">open</span> <span class="i">FSharp</span><span class="o">.</span><span class="i">Configuration</span>
+
+<span class="k">type</span> <span class="i">Config</span> <span class="o">=</span> <span class="i">YamlConfig</span><span class="o">&lt;</span><span class="s">&quot;Config.yaml&quot;</span><span class="o">&gt;</span>
+</code></pre></td>
+</tr>
+</table>
+<p>Compile it. Now we have assembly <code>Config.dll</code> containing generated types with the default values "baked" into them (actually the values are set in the type constructors).</p>
+<p>Let's test it in a C# project. Create a Console Application, add reference to <code>FSharp.Configuration.dll</code> and our F# <code>Config</code> project.</p>
+<p>First, we'll try to create an instance of our generated <code>Config</code> type and check that all the values are there:</p>
+<table class="pre"><tr><td class="lines"><pre class="fssnip"><span class="l">1: </span>
+<span class="l">2: </span>
+</pre></td>
+<td class="snippet"><pre class="fssnip highlighted"><code lang="csharp"><span class="k">var</span> config <span class="o">=</span> <span class="k">new</span> Config.Config();
+Console.WriteLine(<span class="k">string</span>.Format(<span class="s">"Default configuration:\n{0}"</span>, config));
+</code></pre></td></tr></table>
+<p>It should outputs this:</p>
+<table class="pre"><tr><td class="lines"><pre class="fssnip"><span class="l"> 1: </span>
+<span class="l"> 2: </span>
+<span class="l"> 3: </span>
+<span class="l"> 4: </span>
+<span class="l"> 5: </span>
+<span class="l"> 6: </span>
+<span class="l"> 7: </span>
+<span class="l"> 8: </span>
+<span class="l"> 9: </span>
+<span class="l">10: </span>
+<span class="l">11: </span>
+<span class="l">12: </span>
+<span class="l">13: </span>
+<span class="l">14: </span>
+<span class="l">15: </span>
+<span class="l">16: </span>
+<span class="l">17: </span>
+<span class="l">18: </span>
+<span class="l">19: </span>
+<span class="l">20: </span>
+<span class="l">21: </span>
+</pre></td>
+<td class="snippet"><pre class="fssnip"><code lang="yaml">Default settings:
+Mail:
+  Smtp:
+    Host: smtp.sample.com
+    Port: 25
+    User: user1
+    Password: pass1
+  Pop3:
+    Host: pop3.sample.com
+    Port: 110
+    User: user2
+    Password: pass2
+    CheckPeriod: 00:01:00
+  ErrorNotificationRecipients:
+  - user1@sample.com
+  - user2@sample.com
+  ErrorMessageId: 9d165087-9b74-4313-ab90-89be897d3d93
+DB:
+  ConnectionString: Data Source=server1;Initial Catalog=Database1;Integrated Security=SSPI;
+  NumberOfDeadlockRepeats: 5
+  DefaultTimeout: 00:05:00
+</code></pre></td></tr></table>
+<p>And, of course, we now able to access all the config data in a nice typed way like this:</p>
+<table class="pre"><tr><td class="lines"><pre class="fssnip"><span class="l">1: </span>
+<span class="l">2: </span>
+<span class="l">3: </span>
+<span class="l">4: </span>
+<span class="l">5: </span>
+</pre></td>
+<td class="snippet"><pre class="fssnip highlighted"><code lang="fsharp"><span class="k">let</span> <span class="i">pop3host</span> <span class="o">=</span> <span class="i">config</span><span class="o">.</span><span class="i">Mail</span><span class="o">.</span><span class="i">Pop3</span><span class="o">.</span><span class="i">Host</span>
+<span class="fsi">val pop3host : string = &quot;pop3.sample.com&quot;</span>
+
+<span class="k">let</span> <span class="i">dbTimeout</span> <span class="o">=</span> <span class="i">config</span><span class="o">.</span><span class="i">DB</span><span class="o">.</span><span class="i">DefaultTimeout</span>
+<span class="fsi">val dbTimeout : System.TimeSpan = 00:05:00</span>
+</code></pre></td>
+</tr>
+</table>
+<p>It's not very interesting so far, as the main purpose of any configuration is to be loaded from a config file at runtime.
+So, add the following <code>RuntimeConfig.yaml</code> into the C# console project:</p>
+<table class="pre"><tr><td class="lines"><pre class="fssnip"><span class="l"> 1: </span>
+<span class="l"> 2: </span>
+<span class="l"> 3: </span>
+<span class="l"> 4: </span>
+<span class="l"> 5: </span>
+<span class="l"> 6: </span>
+<span class="l"> 7: </span>
+<span class="l"> 8: </span>
+<span class="l"> 9: </span>
+<span class="l">10: </span>
+<span class="l">11: </span>
+<span class="l">12: </span>
+<span class="l">13: </span>
+<span class="l">14: </span>
+<span class="l">15: </span>
+<span class="l">16: </span>
+<span class="l">17: </span>
+<span class="l">18: </span>
+<span class="l">19: </span>
+<span class="l">20: </span>
+<span class="l">21: </span>
+</pre></td>
+<td class="snippet"><pre class="fssnip"><code lang="yaml">Mail:
+  Smtp:
+    Host: smtp2.sample.com
+    Port: 26
+    User: user11
+    Password: pass11
+  Pop3:
+    Host: pop32.sample.com
+    Port: 111
+    User: user2
+    Password: pass2
+    CheckPeriod: 00:02:00
+  ErrorNotificationRecipients:
+    - user11@sample.com
+    - user22@sample.com
+    - new_user@sample.com
+  ErrorMessageId: 9d165087-9b74-4313-ab90-89be897d3d93
+DB:
+  ConnectionString: Data Source=server2;Initial Catalog=Database1;Integrated Security=SSPI;
+  NumberOfDeadlockRepeats: 5
+  DefaultTimeout: 00:10:00
+</code></pre></td></tr></table>
+<p>We changed almost every setting here. Update our default config with this file:</p>
+<table class="pre"><tr><td class="lines"><pre class="fssnip"><span class="l">1: </span>
+<span class="l">2: </span>
+<span class="l">3: </span>
+<span class="l">4: </span>
+</pre></td>
+<td class="snippet"><pre class="fssnip highlighted"><code lang="csharp"><span class="c">// ...as before</span>
+config.Load(<span class="s">@"RuntimeConfig.yaml"</span>);
+Console.WriteLine(<span class="k">string</span>.Format(<span class="s">"Loaded config:\n{0}"</span>, config));
+Console.ReadLine();
+</code></pre></td></tr></table>
+<p>The output should be:</p>
+<table class="pre"><tr><td class="lines"><pre class="fssnip"><span class="l"> 1: </span>
+<span class="l"> 2: </span>
+<span class="l"> 3: </span>
+<span class="l"> 4: </span>
+<span class="l"> 5: </span>
+<span class="l"> 6: </span>
+<span class="l"> 7: </span>
+<span class="l"> 8: </span>
+<span class="l"> 9: </span>
+<span class="l">10: </span>
+<span class="l">11: </span>
+<span class="l">12: </span>
+<span class="l">13: </span>
+<span class="l">14: </span>
+<span class="l">15: </span>
+<span class="l">16: </span>
+<span class="l">17: </span>
+<span class="l">18: </span>
+<span class="l">19: </span>
+<span class="l">20: </span>
+<span class="l">21: </span>
+<span class="l">22: </span>
+</pre></td>
+<td class="snippet"><pre class="fssnip"><code lang="yaml">Loaded settings:
+Mail:
+  Smtp:
+    Host: smtp2.sample.com
+    Port: 26
+    User: user11
+    Password: pass11
+  Pop3:
+    Host: pop32.sample.com
+    Port: 111
+    User: user2
+    Password: pass2
+    CheckPeriod: 00:02:00
+  ErrorNotificationRecipients:
+  - user11@sample.com
+  - user22@sample.com
+  - new_user@sample.com
+  ErrorMessageId: 9d165087-9b74-4313-ab90-89be897d3d93
+DB:
+  ConnectionString: Data Source=server2;Initial Catalog=Database1;Integrated Security=SSPI;
+  NumberOfDeadlockRepeats: 5
+  DefaultTimeout: 00:10:00
+</code></pre></td></tr></table>
+<p>Great! Values have been updated properly, the new user has been added into <code>ErrorNotificationRecipients</code> list.</p>
+<h2><a name="The-Changed-event" class="anchor" href="#The-Changed-event">The Changed event</a></h2>
+<p>Every type in the hierarchy contains <code>Changed: EventHandler</code> event. It's raised when an instance is updated (<code>Load</code>ed), not when the writable properties are assigned.</p>
+<p>Let's show the event in action:</p>
+<table class="pre"><tr><td class="lines"><pre class="fssnip"><span class="l"> 1: </span>
+<span class="l"> 2: </span>
+<span class="l"> 3: </span>
+<span class="l"> 4: </span>
+<span class="l"> 5: </span>
+<span class="l"> 6: </span>
+<span class="l"> 7: </span>
+<span class="l"> 8: </span>
+<span class="l"> 9: </span>
+<span class="l">10: </span>
+<span class="l">11: </span>
+<span class="l">12: </span>
+<span class="l">13: </span>
+<span class="l">14: </span>
+<span class="l">15: </span>
+<span class="l">16: </span>
+<span class="l">17: </span>
+<span class="l">18: </span>
+<span class="l">19: </span>
+<span class="l">20: </span>
+<span class="l">21: </span>
+<span class="l">22: </span>
+<span class="l">23: </span>
+<span class="l">24: </span>
+<span class="l">25: </span>
+<span class="l">26: </span>
+<span class="l">27: </span>
+<span class="l">28: </span>
+<span class="l">29: </span>
+<span class="l">30: </span>
+<span class="l">31: </span>
+<span class="l">32: </span>
+<span class="l">33: </span>
+</pre></td>
+<td class="snippet"><pre class="fssnip highlighted"><code lang="fsharp"><span class="c">// ...reference assemblies and open namespaces as before...</span>
+<span class="k">let</span> <span class="i">c</span> <span class="o">=</span> <span class="i">Config</span>()
+<span class="k">let</span> <span class="i">log</span> <span class="i">name</span> _ <span class="o">=</span> <span class="i">printfn</span> <span class="s">&quot;%s changed!&quot;</span> <span class="i">name</span>
+<span class="c">// add handlers for the root and all down the Mail hierarchy </span>
+<span class="i">c</span><span class="o">.</span><span class="i">Changed</span><span class="o">.</span><span class="i">Add</span> (<span class="i">log</span> <span class="s">&quot;ROOT&quot;</span>)
+<span class="i">c</span><span class="o">.</span><span class="i">Mail</span><span class="o">.</span><span class="i">Changed</span><span class="o">.</span><span class="i">Add</span> (<span class="i">log</span> <span class="s">&quot;Mail&quot;</span>)
+<span class="i">c</span><span class="o">.</span><span class="i">Mail</span><span class="o">.</span><span class="i">Smtp</span><span class="o">.</span><span class="i">Changed</span><span class="o">.</span><span class="i">Add</span> (<span class="i">log</span> <span class="s">&quot;Mail.Smtp&quot;</span>)
+<span class="i">c</span><span class="o">.</span><span class="i">Mail</span><span class="o">.</span><span class="i">Pop3</span><span class="o">.</span><span class="i">Changed</span><span class="o">.</span><span class="i">Add</span> (<span class="i">log</span> <span class="s">&quot;Mail.Pop3&quot;</span>)
+<span class="c">// as a marker, add a handler for DB</span>
+<span class="i">c</span><span class="o">.</span><span class="i">DB</span><span class="o">.</span><span class="i">Changed</span><span class="o">.</span><span class="i">Add</span> (<span class="i">log</span> <span class="s">&quot;DB&quot;</span>)
+<span class="i">c</span><span class="o">.</span><span class="i">LoadText</span> <span class="s">&quot;&quot;&quot;</span>
+<span class="s">Mail:</span>
+<span class="s">  Smtp:</span>
+<span class="s">    Host: smtp.sample.com</span>
+<span class="s">    Port: 25</span>
+<span class="s">    User:       =&gt; first changed value &lt;=</span>
+<span class="s">    Password:   =&gt; second changed value on the same level (in the same Map) &lt;=</span>
+<span class="s">    Ssl: true   </span>
+<span class="s">  Pop3:</span>
+<span class="s">    Host: pop3.sample.com</span>
+<span class="s">    Port: 110</span>
+<span class="s">    User: user2</span>
+<span class="s">    Password: pass2</span>
+<span class="s">    CheckPeriod: 00:01:00</span>
+<span class="s">  ErrorNotificationRecipients:</span>
+<span class="s">    - user1@sample.com</span>
+<span class="s">    - user2@sample.com</span>
+<span class="s">  ErrorMessageId: 9d165087-9b74-4313-ab90-89be897d3d93</span>
+<span class="s">DB:</span>
+<span class="s">  ConnectionString: Data Source=server1;Initial Catalog=Database1;Integrated Security=SSPI;</span>
+<span class="s">  NumberOfDeadlockRepeats: 5</span>
+<span class="s">  DefaultTimeout: 00:05:00</span>
+<span class="s">&quot;&quot;&quot;</span> <span class="o">|&gt;</span> <span class="i">ignore</span>
+</code></pre></td>
+</tr>
+</table>
+<p>The output is as follows:</p>
+<table class="pre"><tr><td class="lines"><pre class="fssnip"><span class="l">1: </span>
+<span class="l">2: </span>
+<span class="l">3: </span>
+</pre></td>
+<td class="snippet"><pre class="fssnip"><code lang="text">ROOT changed!
+Mail changed!
+Mail.Smtp changed!
+</code></pre></td></tr></table>
+<p>So, we can see that all the events have been raised from the root's one down to the most close to the changed value one. And note that there're no duplicates - even though two value was changed in Mail.Smpt map, its Changed event has been raised only once.</p>
+
+
+        </div>
+        <div class="span3">
+          <img src="./img/logo.png" alt="FSharp.Configuration" style="width:150px;margin:10px" />
+          <ul class="nav nav-list" id="menu" style="margin-top: 20px;">
+            <li class="nav-header">FSharp.Configuration</li>
+            <li><a href="./index.html">Home page</a></li>
+            <li class="divider"></li>
+            <li><a href="https://www.nuget.org/packages/FSharp.Configuration">Get Library via NuGet</a></li>
+            <li><a href="http://github.com/fsprojects/FSharp.Configuration">Source Code on GitHub</a></li>
+            <li><a href="http://github.com/fsprojects/FSharp.Configuration/blob/master/LICENSE.txt">License</a></li>
+            <li><a href="http://github.com/fsprojects/FSharp.Configuration/blob/master/RELEASE_NOTES.md">Release Notes</a></li>
+            
+            <li class="nav-header">Getting started</li>
+            <li><a href="./AppSettingsProvider.html">AppSettingsProvider</a></li>
+            <li><a href="./ResXProvider.html">ResXProvider</a></li>
+            <li><a href="./YamlConfigProvider.html">YamlConfigProvider</a></li>
+            <li><a href="./IniTypeProvider.html">IniTypeProvider</a></li>
+        </div>
+      </div>
+    </div>
+    <a href="http://github.com/fsprojects/FSharp.Configuration"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png" alt="Fork me on GitHub"></a>
+  </body>
+  </html>
