@@ -5,12 +5,8 @@ open FSharp.Data
 open FSharp.Data.JsonExtensions
 open Newtonsoft.Json
 open System.Text
-open System.Net.Http
-
-
-let inline (|>>) x f = x |> Option.map f
-let inline (|?) def arg = defaultArg arg def
-let inline map f d = function | Some v -> f v | None -> d
+open Domain
+open DBAdapter
 
 let chl, eul, rfpl, apl, bundes, primera, serieA, fl1 =
     "UEFA-Champions-League", "UEFA-Europa-League", "Russia-Premier-League", "England-Premier-League",
@@ -42,22 +38,6 @@ let fromUnixTimestamp secs =
     let zone = TimeZoneInfo.FindSystemTimeZoneById("Russian Standard Time")
     TimeZoneInfo.ConvertTime(time, zone)
 let asF (jsonValue:JsonValue) = jsonValue.AsFloat()
-
-type BetType =
-    | UnBet
-    | P1 | X | P2 
-    | D1X | D12 | DX2
-    | TG of float
-    | TL of float
-    | IT1G of float
-    | IT1L of float
-    | IT2G of float
-    | IT2L of float
-
-type GameType =
-    | UnGame
-    | X12 | DX12
-    | Total | IndTotal1 | IndTotal2
 
 type TreeItemViewModel = { text : string; children : TreeItemViewModel list }
 
@@ -100,7 +80,7 @@ let toMatchViewModel (id, (id1, name1), (id2, name2), time, games) =
 
 let toLeagueViewModel id name matches =
     let title = sprintf "(%d) %s" id name
-    { text = title; children = matches }
+    { text = title; children = matches |> List.map toMatchViewModel }
 
 let toBetType param _type =
     let toBet v = map (fun f -> v f) UnBet
@@ -141,6 +121,7 @@ let getGame k =
             |> Array.collect getBets
             |> Array.toList
         Some (gameType, bets)
+
 let getMatch m =
     let id = m?CI.AsInteger()
     let team1 = (m?O1I.AsInteger(), m?O1E.AsString())
@@ -162,15 +143,15 @@ let getMatches json =
     json?Value.AsArray()
     |> Array.map getMatch
     |> Array.toList
-    |> List.map toMatchViewModel
 
 let getLeague (name, id) =
-    id
-    |> getUrl
-    |> fetchContentGet
-    |> JsonValue.Parse
-    |> getMatches
-    |> toLeagueViewModel id name
+    let matches =
+        id
+        |> getUrl
+        |> fetchContentGet
+        |> JsonValue.Parse
+        |> getMatches
+    (id, name, matches)
 
 let getResults date =
     let url = "https://1xstavka.ru/getTranslate/ViewGameResultsGroup"
@@ -189,11 +170,19 @@ let main argv =
     let results = getResults "\"2018-03-17\""
 
     let leagues = champs |> List.map getLeague
+    let now = DateTime.Now.ToString()
+
+    let leagueResponses =
+        leagues |> List.map (fun(id, _, matches) -> toLeagueResponse id now matches ([], [], []))
+
+    let leagueVMs =
+        leagues |> List.map (fun(id, name, matches) -> toLeagueViewModel id name matches)
 
     let jsonData =
-        leagues
+        leagueVMs
         |> JsonConvert.SerializeObject
         |> sprintf "var json_data = %s;\r\n"
+
     use sw = new StreamWriter(path="data.js", append=false, encoding=Encoding.UTF8)
     sw.Write(jsonData)
     0
