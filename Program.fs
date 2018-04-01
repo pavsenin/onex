@@ -5,6 +5,7 @@ open FSharp.Data
 open FSharp.Data.JsonExtensions
 open Newtonsoft.Json
 open System.Text
+open Utils
 open Domain
 open DBAdapter
 
@@ -167,13 +168,23 @@ let getResults date =
 
 [<EntryPoint>]
 let main argv =
-    let results = getResults "\"2018-03-17\""
-
     let leagues = champs |> List.map getLeague
-    let now = DateTime.Now.ToString()
+    let now = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss.fff")
 
     let leagueResponses =
         leagues |> List.map (fun(id, _, matches) -> toLeagueResponse id now matches ([], [], []))
+
+    leagueResponses
+    |> List.iter (fun (teams, matches, bets) ->
+        // filter: Home (Goals), Away (Goals)
+        // chunk by 1000 rows
+        let teamsInsertCommand = teams |> Set.ofList |> toTeamsInsertCommand
+        let matchesInsertCommand = matches |> Set.ofList |> toMatchesInsertCommand
+        let betsInsertCommand = bets |> Set.ofList |> toBetsInsertCommand
+        ()
+    )
+
+    let results = getResults "\"2018-03-17\""
 
     let leagueVMs =
         leagues |> List.map (fun(id, name, matches) -> toLeagueViewModel id name matches)

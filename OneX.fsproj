@@ -55,6 +55,8 @@
   <Import Project="$(FSharpTargetsPath)" />
   <ItemGroup>
     <Compile Include="AssemblyInfo.fs" />
+    <Compile Include="Utils.fs" />
+    <Compile Include="Domain.fs" />
     <Compile Include="DBAdapter.fs" />
     <Compile Include="Program.fs" />
     <None Include="App.config" />
