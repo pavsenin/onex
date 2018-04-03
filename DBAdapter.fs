@@ -4,6 +4,7 @@ open FSharp.Configuration
 open System.Data.SqlClient
 open Utils
 open Domain
+open System.Collections.Generic
 
 type Settings = AppSettings<"App.config">
 
@@ -16,17 +17,22 @@ let execute command exec =
     try
         try
             conn.Open()
-            exec cmd
+            Some (exec cmd)
         with
             _ -> None
     finally
         conn.Close()
 
-let executeNonQuery command =
-    execute command (fun cmd -> Some (cmd.ExecuteNonQuery()))
+let executeNonQuery command func =
+    execute command (fun cmd -> func(cmd.ExecuteNonQuery()))
 
-let executeReader command =
-    execute command (fun cmd -> Some (cmd.ExecuteReader()))
+let executeReader command func =
+    execute command (fun cmd -> func(cmd.ExecuteReader()))
+
+type DBTeam = int * string
+type DBMatch = int * int * int * int * string
+type DBBet = int * int * float option * float * string
+type LeagueResponse = DBTeam list * DBMatch list * DBBet list
 
 let toTeamInsertValue (id, name) =
     sprintf "(%d, '%s')" id name
@@ -39,8 +45,8 @@ let toBetInsertValue (matchID, betID, param, value, received) =
     sprintf "(%d, %d, %s, %f, '%s')" matchID betID paramString value received
 
 let toInsertCommand vs map start =
-    let values = vs |> Set.map map
-    if values.IsEmpty then None
+    let values = vs |> Seq.map map
+    if Seq.isEmpty values then None
     else
         let valuesString = System.String.Join(", ", values)
         Some (start + valuesString)
@@ -59,10 +65,41 @@ let teamIDsSelectCommand =
 let matchesIDsSelectCommand =
     "SELECT ID FROM Matches"
 
-type DBTeam = int * string
-type DBMatch = int * int * int * int * string
-type DBBet = int * int * float option * float * string
-type LeagueResponse = DBTeam list * DBMatch list * DBBet list
+let getDBIntValues command =
+    executeReader command (fun reader -> seq { while reader.Read() do yield reader.GetInt32(0) } |> Seq.toList)
+
+
+let insertValues insertCommand set =
+    let chunks = set |> Seq.chunkBySize 1000
+    let x = chunks |> Seq.length
+    let r = 
+        chunks
+        |> Seq.map (fun chunk ->
+            let cmd = chunk |> insertCommand
+            match cmd with
+            | None -> None
+            | Some command -> executeNonQuery command id
+        )
+    r
+
+let insertNewValues selectCommand insertCommand (values:'T list) contains =
+    let set = HashSet(values)
+    let existingSet =
+        selectCommand
+        |> getDBIntValues
+        |> defArg []
+        |> HashSet
+    set.RemoveWhere (fun value -> contains existingSet value) |> ignore
+    insertValues insertCommand set
+
+let insertNewTeams (teams:DBTeam list) =
+    insertNewValues teamIDsSelectCommand toTeamsInsertCommand teams (fun existingSet (id, _) -> existingSet.Contains id)
+
+let insertNewMatches (matches:DBMatch list) =
+    insertNewValues matchesIDsSelectCommand toMatchesInsertCommand matches (fun existingSet (id, _, _, _, _) -> existingSet.Contains id)
+
+let insertNewBets (bets:DBBet list) =
+    insertValues toBetsInsertCommand bets
 
 let toDBBet = function
     | P1 -> Some (1, None)
