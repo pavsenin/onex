@@ -1,16 +1,14 @@
 ﻿module DBAdapter
 
-open FSharp.Configuration
 open System.Data.SqlClient
 open Utils
 open Domain
 open System.Collections.Generic
 
-type Settings = AppSettings<"App.config">
-
-let connectionString = Settings.ConnectionStrings.ConnectionString
+let connectionStrings = Dictionary()
 
 let executeMulti commands exec =
+    let connectionString = connectionStrings.["Onex"]
     use conn = new SqlConnection(connectionString)
     try
         try

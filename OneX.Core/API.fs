@@ -3,12 +3,14 @@
 open Domain
 open DBAdapter
 
-let receiveAndInsertBets time =
+let receiveAndInsertBets connectionString time =
     let leagues = champs |> List.map getLeague
 
     let (teams, matches, bets) =
         leagues |> List.fold (fun response (id, _, matches) -> toLeagueResponse id time matches response) ([], [], [])
+    
+    connectionStrings.["Onex"] <- connectionString
 
-    teams |> filterTeams |> insertNewTeams |> ignore
-    matches |> insertNewMatches |> ignore
     bets |> insertNewBets |> ignore
+    matches |> insertNewMatches |> ignore
+    teams |> filterTeams |> insertNewTeams |> ignore

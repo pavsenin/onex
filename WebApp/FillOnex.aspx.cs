@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -12,7 +13,8 @@ namespace WebApp
         protected void Page_Load(object sender, EventArgs e)
         {
             var now = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss.fff");
-            API.receiveAndInsertBets(now);
+            var connectionString = ConfigurationManager.ConnectionStrings["Onex"].ConnectionString;
+            API.receiveAndInsertBets(connectionString, now);
         }
     }
 }

@@ -27,11 +27,26 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Account/Web.config">
       <publishTime>04/04/2018 14:28:27</publishTime>
     </File>
+    <File Include="bin/cs/FSharp.Core.resources.dll">
+      <publishTime>01/25/2018 13:45:30</publishTime>
+    </File>
+    <File Include="bin/de/FSharp.Core.resources.dll">
+      <publishTime>01/25/2018 13:45:30</publishTime>
+    </File>
+    <File Include="bin/en/FSharp.Core.resources.dll">
+      <publishTime>01/25/2018 13:45:30</publishTime>
+    </File>
+    <File Include="bin/es/FSharp.Core.resources.dll">
+      <publishTime>01/25/2018 13:45:30</publishTime>
+    </File>
+    <File Include="bin/fr/FSharp.Core.resources.dll">
+      <publishTime>01/25/2018 13:45:30</publishTime>
+    </File>
     <File Include="bin/FSharp.Configuration.dll">
       <publishTime>04/04/2018 15:32:26</publishTime>
     </File>
     <File Include="bin/FSharp.Core.dll">
-      <publishTime>11/14/2017 08:56:33</publishTime>
+      <publishTime>01/25/2018 13:45:30</publishTime>
     </File>
     <File Include="bin/FSharp.Data.dll">
       <publishTime>11/13/2017 11:33:19</publishTime>
@@ -39,23 +54,59 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="bin/FSharp.Data.pdb">
       <publishTime>11/13/2017 11:33:19</publishTime>
     </File>
+    <File Include="bin/it/FSharp.Core.resources.dll">
+      <publishTime>01/25/2018 13:45:30</publishTime>
+    </File>
+    <File Include="bin/ja/FSharp.Core.resources.dll">
+      <publishTime>01/25/2018 13:45:30</publishTime>
+    </File>
+    <File Include="bin/ko/FSharp.Core.resources.dll">
+      <publishTime>01/25/2018 13:45:30</publishTime>
+    </File>
+    <File Include="bin/Newtonsoft.Json.dll">
+      <publishTime>11/14/2017 08:56:34</publishTime>
+    </File>
+    <File Include="bin/Newtonsoft.Json.FSharp.dll">
+      <publishTime>11/14/2017 08:56:35</publishTime>
+    </File>
+    <File Include="bin/NodaTime.dll">
+      <publishTime>11/14/2017 08:56:35</publishTime>
+    </File>
     <File Include="bin/OneX.Core.dll">
-      <publishTime>04/04/2018 15:53:35</publishTime>
+      <publishTime>04/04/2018 16:55:57</publishTime>
     </File>
     <File Include="bin/OneX.Core.dll.config">
       <publishTime>04/04/2018 15:51:22</publishTime>
     </File>
     <File Include="bin/OneX.Core.pdb">
-      <publishTime>04/04/2018 15:53:34</publishTime>
+      <publishTime>04/04/2018 16:55:57</publishTime>
+    </File>
+    <File Include="bin/pl/FSharp.Core.resources.dll">
+      <publishTime>01/25/2018 13:45:30</publishTime>
+    </File>
+    <File Include="bin/pt-BR/FSharp.Core.resources.dll">
+      <publishTime>01/25/2018 13:45:30</publishTime>
+    </File>
+    <File Include="bin/ru/FSharp.Core.resources.dll">
+      <publishTime>01/25/2018 13:45:30</publishTime>
     </File>
     <File Include="bin/SharpYaml.dll">
       <publishTime>04/04/2018 15:32:26</publishTime>
     </File>
+    <File Include="bin/tr/FSharp.Core.resources.dll">
+      <publishTime>01/25/2018 13:45:30</publishTime>
+    </File>
     <File Include="bin/WebApp.dll">
-      <publishTime>04/04/2018 15:54:01</publishTime>
+      <publishTime>04/04/2018 16:57:48</publishTime>
     </File>
     <File Include="bin/WebApp.pdb">
-      <publishTime>04/04/2018 15:54:01</publishTime>
+      <publishTime>04/04/2018 16:57:48</publishTime>
+    </File>
+    <File Include="bin/zh-Hans/FSharp.Core.resources.dll">
+      <publishTime>01/25/2018 13:45:30</publishTime>
+    </File>
+    <File Include="bin/zh-Hant/FSharp.Core.resources.dll">
+      <publishTime>01/25/2018 13:45:30</publishTime>
     </File>
     <File Include="Default.aspx">
       <publishTime>04/04/2018 14:28:27</publishTime>
@@ -82,7 +133,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>04/04/2018 14:28:27</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>04/04/2018 15:54:01</publishTime>
+      <publishTime>04/04/2018 16:57:48</publishTime>
     </File>
   </ItemGroup>
 </Project>

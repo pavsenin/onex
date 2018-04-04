@@ -182,7 +182,7 @@
 
  All members of this class are thread-safe and may be used concurrently from multiple threads.</remarks>
 </member>
-<member name="M:Microsoft.FSharp.Collections.Array2DModule.Get``1(``0[0:,0:],System.Int32,System.Int32)">
+<member name="M:Microsoft.FSharp.Collections.Array2DModule.Get``1(``0[0:, 0:],System.Int32,System.Int32)">
  <summary>Fetches an element from a 2D array. You can also use the syntax <c>array.[index1,index2]</c>.</summary>
 
  <param name="array">The input array.</param>
@@ -192,7 +192,7 @@
  <returns>The value of the array at the given index.</returns>
  <exception cref="System.ArgumentException">Thrown when the indices are negative or exceed the bounds of the array.</exception>
 </member>
-<member name="M:Microsoft.FSharp.Collections.Array2DModule.Set``1(``0[0:,0:],System.Int32,System.Int32,``0)">
+<member name="M:Microsoft.FSharp.Collections.Array2DModule.Set``1(``0[0:, 0:],System.Int32,System.Int32,``0)">
  <summary>Sets the value of an element in an array. You can also use the syntax <c>array.[index1,index2] &lt;- value</c>.</summary>
 
  <param name="array">The input array.</param>
@@ -201,7 +201,7 @@
  <param name="value">The value to set in the array.</param>
  <exception cref="System.ArgumentException">Thrown when the indices are negative or exceed the bounds of the array.</exception> 
 </member>
-<member name="M:Microsoft.FSharp.Collections.Array2DModule.Rebase``1(``0[0:,0:])">
+<member name="M:Microsoft.FSharp.Collections.Array2DModule.Rebase``1(``0[0:, 0:])">
  <summary>Builds a new array whose elements are the same as the input array but
  where a non-zero-based input array generates a corresponding zero-based 
  output array.</summary>
@@ -210,7 +210,7 @@
 
  <returns>The zero-based output array.</returns>
 </member>
-<member name="M:Microsoft.FSharp.Collections.Array2DModule.MapIndexed``2(Microsoft.FSharp.Core.FSharpFunc{System.Int32,Microsoft.FSharp.Core.FSharpFunc{System.Int32,Microsoft.FSharp.Core.FSharpFunc{``0,``1}}},``0[0:,0:])">
+<member name="M:Microsoft.FSharp.Collections.Array2DModule.MapIndexed``2(Microsoft.FSharp.Core.FSharpFunc{System.Int32,Microsoft.FSharp.Core.FSharpFunc{System.Int32,Microsoft.FSharp.Core.FSharpFunc{``0,``1}}},``0[0:, 0:])">
  <summary>Builds a new array whose elements are the results of applying the given function
  to each of the elements of the array. The integer indices passed to the
  function indicates the element being transformed.</summary>
@@ -224,7 +224,7 @@
 
  <returns>An array whose elements have been transformed by the given mapping.</returns>
 </member>
-<member name="M:Microsoft.FSharp.Collections.Array2DModule.Map``2(Microsoft.FSharp.Core.FSharpFunc{``0,``1},``0[0:,0:])">
+<member name="M:Microsoft.FSharp.Collections.Array2DModule.Map``2(Microsoft.FSharp.Core.FSharpFunc{``0,``1},``0[0:, 0:])">
  <summary>Builds a new array whose elements are the results of applying the given function
  to each of the elements of the array.</summary>
 
@@ -236,28 +236,28 @@
 
  <returns>An array whose elements have been transformed by the given mapping.</returns>
 </member>
-<member name="M:Microsoft.FSharp.Collections.Array2DModule.Length2``1(``0[0:,0:])">
+<member name="M:Microsoft.FSharp.Collections.Array2DModule.Length2``1(``0[0:, 0:])">
  <summary>Returns the length of an array in the second dimension.</summary>
 
  <param name="array">The input array.</param>
 
  <returns>The length of the array in the second dimension.</returns>  
 </member>
-<member name="M:Microsoft.FSharp.Collections.Array2DModule.Length1``1(``0[0:,0:])">
+<member name="M:Microsoft.FSharp.Collections.Array2DModule.Length1``1(``0[0:, 0:])">
  <summary>Returns the length of an array in the first dimension.</summary>
 
  <param name="array">The input array.</param>
 
  <returns>The length of the array in the first dimension.</returns>  
 </member>
-<member name="M:Microsoft.FSharp.Collections.Array2DModule.IterateIndexed``1(Microsoft.FSharp.Core.FSharpFunc{System.Int32,Microsoft.FSharp.Core.FSharpFunc{System.Int32,Microsoft.FSharp.Core.FSharpFunc{``0,Microsoft.FSharp.Core.Unit}}},``0[0:,0:])">
+<member name="M:Microsoft.FSharp.Collections.Array2DModule.IterateIndexed``1(Microsoft.FSharp.Core.FSharpFunc{System.Int32,Microsoft.FSharp.Core.FSharpFunc{System.Int32,Microsoft.FSharp.Core.FSharpFunc{``0,Microsoft.FSharp.Core.Unit}}},``0[0:, 0:])">
  <summary>Applies the given function to each element of the array.  The integer indices passed to the
  function indicates the index of element.</summary>
 
  <param name="action">A function to apply to each element of the array with the indices available as an argument.</param>
  <param name="array">The input array.</param>
 </member>
-<member name="M:Microsoft.FSharp.Collections.Array2DModule.Iterate``1(Microsoft.FSharp.Core.FSharpFunc{``0,Microsoft.FSharp.Core.Unit},``0[0:,0:])">
+<member name="M:Microsoft.FSharp.Collections.Array2DModule.Iterate``1(Microsoft.FSharp.Core.FSharpFunc{``0,Microsoft.FSharp.Core.Unit},``0[0:, 0:])">
  <summary>Applies the given function to each element of the array.</summary>
 
  <param name="action">A function to apply to each element of the array.</param>
@@ -327,7 +327,7 @@
  <returns>The generated array.</returns>
  <exception cref="System.ArgumentException">Thrown when either of the lengths is negative.</exception>
 </member>
-<member name="M:Microsoft.FSharp.Collections.Array2DModule.CopyTo``1(``0[0:,0:],System.Int32,System.Int32,``0[0:,0:],System.Int32,System.Int32,System.Int32,System.Int32)">
+<member name="M:Microsoft.FSharp.Collections.Array2DModule.CopyTo``1(``0[0:, 0:],System.Int32,System.Int32,``0[0:, 0:],System.Int32,System.Int32,System.Int32,System.Int32)">
  <summary>Reads a range of elements from the first array and write them into the second.</summary>
 
  <param name="source">The source array.</param>
@@ -341,7 +341,7 @@
  <exception cref="System.ArgumentException">Thrown when any of the indices are negative or if either of
  the counts are larger than the dimensions of the array allow.</exception>
 </member>
-<member name="M:Microsoft.FSharp.Collections.Array2DModule.Copy``1(``0[0:,0:])">
+<member name="M:Microsoft.FSharp.Collections.Array2DModule.Copy``1(``0[0:, 0:])">
  <summary>Builds a new array whose elements are the same as the input array.</summary>
 
  <remarks>For non-zero-based arrays the basing on an input array will be propagated to the output
@@ -351,14 +351,14 @@
 
  <returns>A copy of the input array.</returns>
 </member>
-<member name="M:Microsoft.FSharp.Collections.Array2DModule.Base2``1(``0[0:,0:])">
+<member name="M:Microsoft.FSharp.Collections.Array2DModule.Base2``1(``0[0:, 0:])">
  <summary>Fetches the base-index for the second dimension of the array.</summary>
 
  <param name="array">The input array.</param>
 
  <returns>The base-index of the second dimension of the array.</returns>
 </member>
-<member name="M:Microsoft.FSharp.Collections.Array2DModule.Base1``1(``0[0:,0:])">
+<member name="M:Microsoft.FSharp.Collections.Array2DModule.Base1``1(``0[0:, 0:])">
  <summary>Fetches the base-index for the first dimension of the array.</summary>
 
  <param name="array">The input array.</param>
@@ -474,6 +474,15 @@
 
  <returns>The result sequence.</returns>
 
+ <exception cref="System.ArgumentNullException">Thrown when the input sequence is null.</exception>
+</member>
+<member name="M:Microsoft.FSharp.Collections.SeqModule.Transpose``2(System.Collections.Generic.IEnumerable{``0})">
+ <summary>Returns the transpose of the given sequence of sequences.</summary>
+ <remarks>This function returns a sequence that digests the whole initial sequence as soon as
+ that sequence is iterated. As a result this function should not be used with
+ large or infinite sequences.</remarks>
+ <param name="source">The input sequence.</param>
+ <returns>The transposed sequence.</returns>
  <exception cref="System.ArgumentNullException">Thrown when the input sequence is null.</exception>
 </member>
 <member name="M:Microsoft.FSharp.Collections.SeqModule.TryPick``2(Microsoft.FSharp.Core.FSharpFunc{``0,Microsoft.FSharp.Core.FSharpOption{``1}},System.Collections.Generic.IEnumerable{``0})">
@@ -1707,6 +1716,13 @@
  <param name="array">The input list.</param>
  <returns>The result list.</returns>
 </member>
+<member name="M:Microsoft.FSharp.Collections.ListModule.Transpose``1(System.Collections.Generic.IEnumerable{Microsoft.FSharp.Collections.FSharpList{``0}})">
+ <summary>Returns the transpose of the given sequence of lists.</summary>
+ <param name="lists">The input sequence of list.</param>
+ <returns>The transposed list.</returns>
+ <exception cref="System.ArgumentNullException">Thrown when the input sequence is null.</exception>
+ <exception cref="System.ArgumentException">Thrown when the input lists differ in length.</exception>
+</member>
 <member name="M:Microsoft.FSharp.Collections.ListModule.TryHead``1(Microsoft.FSharp.Collections.FSharpList{``0})">
  <summary>Returns the first element of the list, or
  <c>None</c> if the list is empty.</summary>
@@ -2487,6 +2503,13 @@
  <param name="array">The input array.</param>
  <returns>The result array.</returns>
  <exception cref="System.ArgumentNullException">Thrown when the input array is null.</exception>
+</member>
+<member name="M:Microsoft.FSharp.Collections.ArrayModule.Transpose``1(System.Collections.Generic.IEnumerable{``0[]})">
+ <summary>Returns the transpose of the given sequence of arrays.</summary>
+ <param name="arrays">The input sequence of arrays.</param>
+ <returns>The transposed array.</returns>
+ <exception cref="System.ArgumentNullException">Thrown when the input sequence is null.</exception>
+ <exception cref="System.ArgumentException">Thrown when the input arrays differ in length.</exception>
 </member>
 <member name="M:Microsoft.FSharp.Collections.ArrayModule.ToSeq``1(``0[])">
  <summary>Views the given array as a sequence.</summary>
@@ -3441,7 +3464,7 @@
 <member name="T:Microsoft.FSharp.Collections.ArrayModule">
  <summary>Basic operations on arrays.</summary>
 </member>
-<member name="M:Microsoft.FSharp.Collections.Array4DModule.Set``1(``0[0:,0:,0:,0:],System.Int32,System.Int32,System.Int32,System.Int32,``0)">
+<member name="M:Microsoft.FSharp.Collections.Array4DModule.Set``1(``0[0:, 0:, 0:, 0:],System.Int32,System.Int32,System.Int32,System.Int32,``0)">
  <summary>Sets the value of an element in an array. You can also 
  use the syntax 'array.[index1,index2,index3,index4] &lt;- value'.</summary>
  <param name="array">The input array.</param>
@@ -3451,7 +3474,7 @@
  <param name="index4">The index along the fourth dimension.</param>
  <param name="value">The value to set.</param>
 </member>
-<member name="M:Microsoft.FSharp.Collections.Array4DModule.Get``1(``0[0:,0:,0:,0:],System.Int32,System.Int32,System.Int32,System.Int32)">
+<member name="M:Microsoft.FSharp.Collections.Array4DModule.Get``1(``0[0:, 0:, 0:, 0:],System.Int32,System.Int32,System.Int32,System.Int32)">
  <summary>Fetches an element from a 4D array. You can also use the syntax 'array.[index1,index2,index3,index4]'</summary>
  <param name="array">The input array.</param>
  <param name="index1">The index along the first dimension.</param>
@@ -3468,22 +3491,22 @@
  <param name="length4">The length of the fourth dimension.</param>
  <returns>The created array.</returns>
 </member>
-<member name="M:Microsoft.FSharp.Collections.Array4DModule.Length4``1(``0[0:,0:,0:,0:])">
+<member name="M:Microsoft.FSharp.Collections.Array4DModule.Length4``1(``0[0:, 0:, 0:, 0:])">
  <summary>Returns the length of an array in the fourth dimension.</summary>
  <param name="array">The input array.</param>
  <returns>The length of the array in the fourth dimension.</returns>
 </member>
-<member name="M:Microsoft.FSharp.Collections.Array4DModule.Length3``1(``0[0:,0:,0:,0:])">
+<member name="M:Microsoft.FSharp.Collections.Array4DModule.Length3``1(``0[0:, 0:, 0:, 0:])">
  <summary>Returns the length of an array in the third dimension.</summary>
  <param name="array">The input array.</param>
  <returns>The length of the array in the third dimension.</returns>
 </member>
-<member name="M:Microsoft.FSharp.Collections.Array4DModule.Length2``1(``0[0:,0:,0:,0:])">
+<member name="M:Microsoft.FSharp.Collections.Array4DModule.Length2``1(``0[0:, 0:, 0:, 0:])">
  <summary>Returns the length of an array in the second dimension.</summary>
  <param name="array">The input array.</param>
  <returns>The length of the array in the second dimension.</returns>
 </member>
-<member name="M:Microsoft.FSharp.Collections.Array4DModule.Length1``1(``0[0:,0:,0:,0:])">
+<member name="M:Microsoft.FSharp.Collections.Array4DModule.Length1``1(``0[0:, 0:, 0:, 0:])">
  <summary>Returns the length of an array in the first dimension  </summary>
  <param name="array">The input array.</param>
  <returns>The length of the array in the first dimension.</returns>
@@ -3516,7 +3539,7 @@
  <param name="length3">The length of the third dimension.</param>
  <returns>The created array.</returns>
 </member>
-<member name="M:Microsoft.FSharp.Collections.Array3DModule.Set``1(``0[0:,0:,0:],System.Int32,System.Int32,System.Int32,``0)">
+<member name="M:Microsoft.FSharp.Collections.Array3DModule.Set``1(``0[0:, 0:, 0:],System.Int32,System.Int32,System.Int32,``0)">
  <summary>Sets the value of an element in an array. You can also 
  use the syntax 'array.[index1,index2,index3] &lt;- value'.</summary>
  <param name="array">The input array.</param>
@@ -3525,7 +3548,7 @@
  <param name="index3">The index along the third dimension.</param>
  <param name="value">The value to set at the given index.</param>
 </member>
-<member name="M:Microsoft.FSharp.Collections.Array3DModule.MapIndexed``2(Microsoft.FSharp.Core.FSharpFunc{System.Int32,Microsoft.FSharp.Core.FSharpFunc{System.Int32,Microsoft.FSharp.Core.FSharpFunc{System.Int32,Microsoft.FSharp.Core.FSharpFunc{``0,``1}}}},``0[0:,0:,0:])">
+<member name="M:Microsoft.FSharp.Collections.Array3DModule.MapIndexed``2(Microsoft.FSharp.Core.FSharpFunc{System.Int32,Microsoft.FSharp.Core.FSharpFunc{System.Int32,Microsoft.FSharp.Core.FSharpFunc{System.Int32,Microsoft.FSharp.Core.FSharpFunc{``0,``1}}}},``0[0:, 0:, 0:])">
  <summary>Builds a new array whose elements are the results of applying the given function
  to each of the elements of the array. The integer indices passed to the
  function indicates the element being transformed.</summary>
@@ -3536,7 +3559,7 @@
  <param name="array">The input array.</param>
  <returns>The array created from the transformed elements.</returns>
 </member>
-<member name="M:Microsoft.FSharp.Collections.Array3DModule.Map``2(Microsoft.FSharp.Core.FSharpFunc{``0,``1},``0[0:,0:,0:])">
+<member name="M:Microsoft.FSharp.Collections.Array3DModule.Map``2(Microsoft.FSharp.Core.FSharpFunc{``0,``1},``0[0:, 0:, 0:])">
  <summary>Builds a new array whose elements are the results of applying the given function
  to each of the elements of the array.</summary>
 
@@ -3546,33 +3569,33 @@
  <param name="array">The input array.</param>
  <returns>The array created from the transformed elements.</returns>
 </member>
-<member name="M:Microsoft.FSharp.Collections.Array3DModule.Length3``1(``0[0:,0:,0:])">
+<member name="M:Microsoft.FSharp.Collections.Array3DModule.Length3``1(``0[0:, 0:, 0:])">
  <summary>Returns the length of an array in the third dimension.</summary>
  <param name="array">The input array.</param>
  <returns>The length of the array in the third dimension.</returns>
 </member>
-<member name="M:Microsoft.FSharp.Collections.Array3DModule.Length2``1(``0[0:,0:,0:])">
+<member name="M:Microsoft.FSharp.Collections.Array3DModule.Length2``1(``0[0:, 0:, 0:])">
  <summary>Returns the length of an array in the second dimension.</summary>
  <param name="array">The input array.</param>
  <returns>The length of the array in the second dimension.</returns>
 </member>
-<member name="M:Microsoft.FSharp.Collections.Array3DModule.Length1``1(``0[0:,0:,0:])">
+<member name="M:Microsoft.FSharp.Collections.Array3DModule.Length1``1(``0[0:, 0:, 0:])">
  <summary>Returns the length of an array in the first dimension  </summary>
  <param name="array">The input array.</param>
  <returns>The length of the array in the first dimension.</returns>
 </member>
-<member name="M:Microsoft.FSharp.Collections.Array3DModule.IterateIndexed``1(Microsoft.FSharp.Core.FSharpFunc{System.Int32,Microsoft.FSharp.Core.FSharpFunc{System.Int32,Microsoft.FSharp.Core.FSharpFunc{System.Int32,Microsoft.FSharp.Core.FSharpFunc{``0,Microsoft.FSharp.Core.Unit}}}},``0[0:,0:,0:])">
+<member name="M:Microsoft.FSharp.Collections.Array3DModule.IterateIndexed``1(Microsoft.FSharp.Core.FSharpFunc{System.Int32,Microsoft.FSharp.Core.FSharpFunc{System.Int32,Microsoft.FSharp.Core.FSharpFunc{System.Int32,Microsoft.FSharp.Core.FSharpFunc{``0,Microsoft.FSharp.Core.Unit}}}},``0[0:, 0:, 0:])">
  <summary>Applies the given function to each element of the array. The integer indices passed to the
  function indicates the index of element.</summary>
  <param name="action">The function to apply to each element of the array.</param>
  <param name="array">The input array.</param>
 </member>
-<member name="M:Microsoft.FSharp.Collections.Array3DModule.Iterate``1(Microsoft.FSharp.Core.FSharpFunc{``0,Microsoft.FSharp.Core.Unit},``0[0:,0:,0:])">
+<member name="M:Microsoft.FSharp.Collections.Array3DModule.Iterate``1(Microsoft.FSharp.Core.FSharpFunc{``0,Microsoft.FSharp.Core.Unit},``0[0:, 0:, 0:])">
  <summary>Applies the given function to each element of the array.</summary>
  <param name="action">The function to apply to each element of the array.</param>
  <param name="array">The input array.</param>
 </member>
-<member name="M:Microsoft.FSharp.Collections.Array3DModule.Get``1(``0[0:,0:,0:],System.Int32,System.Int32,System.Int32)">
+<member name="M:Microsoft.FSharp.Collections.Array3DModule.Get``1(``0[0:, 0:, 0:],System.Int32,System.Int32,System.Int32)">
  <summary>Fetches an element from a 3D array. You can also use the syntax 'array.[index1,index2,index3]'</summary>
  <param name="array">The input array.</param>
  <param name="index1">The index along the first dimension.</param>
@@ -5378,6 +5401,11 @@
 <member name="T:Microsoft.FSharp.Quotations.PatternsModule">
  <summary>Contains a set of primitive F# active patterns to analyze F# expression objects</summary>
 </member>
+<member name="M:Microsoft.FSharp.NativeInterop.NativePtrModule.ToByRefInlined``1(``0*)">
+ <summary>Converts a given typed native pointer to a managed pointer.</summary>
+ <param name="address">The input pointer.</param>
+ <returns>The managed pointer.</returns>
+</member>
 <member name="M:Microsoft.FSharp.NativeInterop.NativePtrModule.StackAllocate``1(System.Int32)">
  <summary>Allocates a region of memory on the stack.</summary>
  <param name="count">The number of objects of type T to allocate.</param>
@@ -5856,6 +5884,21 @@
  <param name="cancellationToken">The <c>CancellationToken</c> to associate with the computation.
  The default is used if this parameter is not provided.</param>
 </member>
+<member name="M:Microsoft.FSharp.Control.FSharpAsync.StartImmediateAsTask``1(Microsoft.FSharp.Control.FSharpAsync{``0},Microsoft.FSharp.Core.FSharpOption{System.Threading.CancellationToken})">
+ <summary>Runs an asynchronous computation, starting immediately on the current operating system, 
+ but also returns the execution as <c>System.Threading.Tasks.Task</c> 
+ </summary>
+ <remarks>If no cancellation token is provided then the default cancellation token is used.
+ You may prefer using this method if you want to achive a similar behviour to async await in C# as 
+ async computation starts on the current thread with an ability to return a result.
+ </remarks>
+ <param name="computation">The asynchronous computation to execute.</param>
+ <param name="cancellationToken">The <c>CancellationToken</c> to associate with the computation.
+ The default is used if this parameter is not provided.</param>
+ <returns>A <c>System.Threading.Tasks.Task</c> that will be completed
+ in the corresponding state once the computation terminates (produces the result, throws exception or gets canceled)</returns>
+ </returns> 
+</member>
 <member name="M:Microsoft.FSharp.Control.FSharpAsync.StartImmediate(Microsoft.FSharp.Control.FSharpAsync{Microsoft.FSharp.Core.Unit},Microsoft.FSharp.Core.FSharpOption{System.Threading.CancellationToken})">
  <summary>Runs an asynchronous computation, starting immediately on the current operating system
  thread.</summary>
@@ -5915,19 +5958,6 @@
  and not infinite.</exception>
 </member>
 <member name="M:Microsoft.FSharp.Control.FSharpAsync.RunSynchronously``1(Microsoft.FSharp.Control.FSharpAsync{``0},Microsoft.FSharp.Core.FSharpOption{System.Int32},Microsoft.FSharp.Core.FSharpOption{System.Threading.CancellationToken})">
- <summary>Runs the asynchronous computation and await its result.</summary>
-
- <remarks>If an exception occurs in the asynchronous computation then an exception is re-raised by this
- function.
-        
- If no cancellation token is provided then the default cancellation token is used.
-
- The timeout parameter is given in milliseconds.  A value of -1 is equivalent to
- System.Threading.Timeout.Infinite.</remarks>
- <param name="computation">The computation to run.</param>
- <param name="timeout">The amount of time in milliseconds to wait for the result of the
- computation before raising a <c>System.TimeoutException</c>.  If no value is provided
- for timeout then a default of -1 is used to correspond to System.Threading.Timeout.Infinite.</param>
  <param name="cancellationToken">The cancellation token to be associated with the computation.
  If one is not supplied, the default cancellation token is used.</param>
  <returns>The result of the computation.</returns>
@@ -7726,7 +7756,7 @@
  due to the use of <c>null</c> as a value representation.</remarks>
 </member>
 <member name="T:Microsoft.FSharp.Core.ref`1">
- <summary>The type of mutable references. Use the functions [:=] and [!] to get and
+ <summary>The type of mutable references. Use the functions [!] and [:=] to get and
  set values of this type.</summary>
 </member>
 <member name="P:Microsoft.FSharp.Core.FSharpRef`1.contents">
@@ -7741,7 +7771,7 @@
  <summary>The current value of the reference cell</summary>
 </member>
 <member name="T:Microsoft.FSharp.Core.FSharpRef`1">
- <summary>The type of mutable references. Use the functions [:=] and [!] to get and
+ <summary>The type of mutable references. Use the functions [!] and [:=] to get and
  set values of this type.</summary>
 </member>
 <member name="M:Microsoft.FSharp.Core.FuncConvert.ToFSharpFunc``2(System.Converter{``0,``1})">
@@ -8690,6 +8720,429 @@
 </member>
 <member name="T:Microsoft.FSharp.Core.MatchFailureException">
  <summary>Non-exhaustive match failures will raise the MatchFailureException exception</summary>
+</member>
+<member name="P:Microsoft.FSharp.Core.SR.unsupportedQueryConstructKind">
+ <summary>This is not a valid query expression. The construct '{0}' was used in a query but is not recognized by the F#-to-LINQ query translator. Check the specification of permitted queries and consider moving some of the operations out of the query expression.</summary>
+</member>
+<member name="P:Microsoft.FSharp.Core.SR.unsupportedQueryProperty">
+ <summary>This is not a valid query expression. The property '{0}' was used in a query but is not recognized by the F#-to-LINQ query translator. Check the specification of permitted queries and consider moving some of the operations out of the query expression.</summary>
+</member>
+<member name="P:Microsoft.FSharp.Core.SR.unsupportedQueryCall">
+ <summary>This is not a valid query expression. The method '{0}' was used in a query but is not recognized by the F#-to-LINQ query translator. Check the specification of permitted queries and consider moving some of the operations out of the query expression</summary>
+</member>
+<member name="P:Microsoft.FSharp.Core.SR.unsupportedQueryConstruct">
+ <summary>This is not a valid query expression. The following construct was used in a query but is not recognized by the F#-to-LINQ query translator:\n{0}\nCheck the specification of permitted queries and consider moving some of the operations out of the query expression.</summary>
+</member>
+<member name="P:Microsoft.FSharp.Core.SR.unsupportedIfThenElse">
+ <summary>An if/then/else conditional or pattern matching expression with multiple branches is not permitted in a query. An if/then/else conditional may be used.</summary>
+</member>
+<member name="P:Microsoft.FSharp.Core.SR.failDueToUnsupportedInputTypeInSumByOrAverageBy">
+ <summary>Unrecognized use of a 'sumBy' or 'averageBy' operator in a query. In queries whose original data is of static type IQueryable, these operators may only be used with result type int32, int64, single, double or decimal</summary>
+</member>
+<member name="P:Microsoft.FSharp.Core.SR.thenByError">
+ <summary>'thenBy' and 'thenByDescending' may only be used with an ordered input</summary>
+</member>
+<member name="P:Microsoft.FSharp.Core.SR.inputSequenceTooLong">
+ <summary>The input sequence contains more than one element.</summary>
+</member>
+<member name="P:Microsoft.FSharp.Core.SR.invalidTupleTypeConstructorNotDefined">
+ <summary>The tuple type '{0}' is invalid. Required constructor is not defined.</summary>
+</member>
+<member name="P:Microsoft.FSharp.Core.SR.invalidRecordTypeConstructorNotDefined">
+ <summary>The record type '{0}' is invalid. Required constructor is not defined.</summary>
+</member>
+<member name="P:Microsoft.FSharp.Core.SR.controlContinuationInvokedMultipleTimes">
+ <summary>A continuation provided by Async.FromContinuations was invoked multiple times</summary>
+</member>
+<member name="P:Microsoft.FSharp.Core.SR.optionValueWasNone">
+ <summary>The option value was None</summary>
+</member>
+<member name="P:Microsoft.FSharp.Core.SR.thisValueCannotBeMutated">
+ <summary>This value cannot be mutated</summary>
+</member>
+<member name="P:Microsoft.FSharp.Core.SR.QtypeArgumentOutOfRange">
+ <summary>type argument out of range</summary>
+</member>
+<member name="P:Microsoft.FSharp.Core.SR.QillFormedAppOrLet">
+ <summary>ill formed expression: AppOp or LetOp</summary>
+</member>
+<member name="P:Microsoft.FSharp.Core.SR.QfailedToBindAssembly">
+ <summary>Failed to bind assembly '{0}' while processing quotation data</summary>
+</member>
+<member name="P:Microsoft.FSharp.Core.SR.QcannotTakeAddress">
+ <summary>Cannot take the address of this quotation</summary>
+</member>
+<member name="P:Microsoft.FSharp.Core.SR.QcannotBindToMethod">
+ <summary>Could not bind to method</summary>
+</member>
+<member name="P:Microsoft.FSharp.Core.SR.QcannotBindProperty">
+ <summary>Could not bind property {0} in type {1}</summary>
+</member>
+<member name="P:Microsoft.FSharp.Core.SR.QcannotBindFunction">
+ <summary>Could not bind function {0} in type {1}</summary>
+</member>
+<member name="P:Microsoft.FSharp.Core.SR.printfWidthSpecifierIllegal">
+ <summary>Bad format specifier (width)</summary>
+</member>
+<member name="P:Microsoft.FSharp.Core.SR.printfSpecifierAfterIllegal">
+ <summary>Bad format specifier (after {0})</summary>
+</member>
+<member name="P:Microsoft.FSharp.Core.SR.printfPrecisonSpecifierIllegal">
+ <summary>Bad format specifier (precision)</summary>
+</member>
+<member name="P:Microsoft.FSharp.Core.SR.printfNotAFunType">
+ <summary>Not a function type</summary>
+</member>
+<member name="P:Microsoft.FSharp.Core.SR.printfMissingFormatSpecifier">
+ <summary>Missing format specifier</summary>
+</member>
+<member name="P:Microsoft.FSharp.Core.SR.printfHashFormatSpecifierIllegal">
+ <summary>The # formatting modifier is invalid in F#</summary>
+</member>
+<member name="P:Microsoft.FSharp.Core.SR.printfExpectedWidth">
+ <summary>Expected a width argument</summary>
+</member>
+<member name="P:Microsoft.FSharp.Core.SR.printfExpectedPrecision">
+ <summary>Expected a precision argument</summary>
+</member>
+<member name="P:Microsoft.FSharp.Core.SR.printfBadIntegerForDynamicFomatter">
+ <summary>Bad integer supplied to dynamic formatter</summary>
+</member>
+<member name="P:Microsoft.FSharp.Core.SR.printfBadFormatSpecifier">
+ <summary>Bad format specifier:{0}</summary>
+</member>
+<member name="P:Microsoft.FSharp.Core.SR.printfBadFloatValue">
+ <summary>Bad float value</summary>
+</member>
+<member name="P:Microsoft.FSharp.Core.SR.multipleCompilationMappings">
+ <summary>Multiple CompilationMappingAttributes, expected at most one</summary>
+</member>
+<member name="P:Microsoft.FSharp.Core.SR.moveNextNotCalledOrFinished">
+ <summary>MoveNext not called, or finished</summary>
+</member>
+<member name="P:Microsoft.FSharp.Core.SR.firstClassUsesOfSplice">
+ <summary>first class uses of '%' or '%%' are not permitted</summary>
+</member>
+<member name="P:Microsoft.FSharp.Core.SR.constructorForUnionCaseNotFound">
+ <summary>The constructor method '{0}' for the union case could not be found</summary>
+</member>
+<member name="P:Microsoft.FSharp.Core.SR.keyNotFoundAlt">
+ <summary>An index satisfying the predicate was not found in the collection.</summary>
+</member>
+<member name="P:Microsoft.FSharp.Core.SR.QwrongNumOfTypeArgs">
+ <summary>The method '{0}' expects {1} type arguments but {2} were provided</summary>
+</member>
+<member name="P:Microsoft.FSharp.Core.SR.QwritingGetOnly">
+ <summary>Writing a get-only property</summary>
+</member>
+<member name="P:Microsoft.FSharp.Core.SR.QunionNeedsDiffNumArgs">
+ <summary>F# union type requires different number of arguments</summary>
+</member>
+<member name="P:Microsoft.FSharp.Core.SR.QtupleLengthsDiffer">
+ <summary>The tuple lengths are different</summary>
+</member>
+<member name="P:Microsoft.FSharp.Core.SR.QtupleAccessOutOfRange">
+ <summary>Tuple access out of range</summary>
+</member>
+<member name="P:Microsoft.FSharp.Core.SR.QtmmRaw">
+ <summary>Type mismatch when splicing expression into quotation literal. The type of the expression tree being inserted doesn't match the type expected by the splicing operation. Expected '{0}', but received type '{1}'. Consider type-annotating with the expected expression type, e.g., (%% x : {0}) or (%x : {0}).</summary>
+</member>
+<member name="P:Microsoft.FSharp.Core.SR.QtmmFunTypeNotMatchDelegate">
+ <summary>Type mismatch when building '{0}': function type doesn't match delegate type. Expected '{1}', but received type '{2}'.</summary>
+</member>
+<member name="P:Microsoft.FSharp.Core.SR.QtmmExprHasWrongType">
+ <summary>Type mismatch when building '{0}': the expression has the wrong type. Expected '{1}', but received type '{2}'.</summary>
+</member>
+<member name="P:Microsoft.FSharp.Core.SR.QstaticWithReceiverObject">
+ <summary>Receiver object was unexpected, as member is static</summary>
+</member>
+<member name="P:Microsoft.FSharp.Core.SR.QreadingSetOnly">
+ <summary>Reading a set-only property</summary>
+</member>
+<member name="P:Microsoft.FSharp.Core.SR.QparentCannotBeNull">
+ <summary>Parent type cannot be null</summary>
+</member>
+<member name="P:Microsoft.FSharp.Core.SR.QnonStaticNoReceiverObject">
+ <summary>The member is non-static (instance), but no receiver object was supplied</summary>
+</member>
+<member name="P:Microsoft.FSharp.Core.SR.QinvalidFuncType">
+ <summary>Invalid function type</summary>
+</member>
+<member name="P:Microsoft.FSharp.Core.SR.QincorrectType">
+ <summary>Incorrect type</summary>
+</member>
+<member name="P:Microsoft.FSharp.Core.SR.QincorrectNumArgs">
+ <summary>Incorrect number of arguments</summary>
+</member>
+<member name="P:Microsoft.FSharp.Core.SR.QincorrectInstanceType">
+ <summary>Incorrect instance type</summary>
+</member>
+<member name="P:Microsoft.FSharp.Core.SR.QincompatibleRecordLength">
+ <summary>Incompatible record length</summary>
+</member>
+<member name="P:Microsoft.FSharp.Core.SR.QfailedToBindTypeInAssembly">
+ <summary>Failed to bind type '{0}' in assembly '{1}'</summary>
+</member>
+<member name="P:Microsoft.FSharp.Core.SR.QfailedToBindProperty">
+ <summary>Failed to bind property '{0}'</summary>
+</member>
+<member name="P:Microsoft.FSharp.Core.SR.QfailedToBindField">
+ <summary>Failed to bind field '{0}'</summary>
+</member>
+<member name="P:Microsoft.FSharp.Core.SR.QfailedToBindConstructor">
+ <summary>Failed to bind constructor</summary>
+</member>
+<member name="P:Microsoft.FSharp.Core.SR.tupleIndexOutOfRange">
+ <summary>The tuple index '{1}' was out of range for tuple type '{0}'.</summary>
+</member>
+<member name="P:Microsoft.FSharp.Core.SR.syncContextNull">
+ <summary>The System.Threading.SynchronizationContext.Current of the calling thread is null.</summary>
+</member>
+<member name="P:Microsoft.FSharp.Core.SR.stepCannotBeZero">
+ <summary>The step of a range cannot be zero.</summary>
+</member>
+<member name="P:Microsoft.FSharp.Core.SR.stepCannotBeNaN">
+ <summary>The step of a range cannot be NaN.</summary>
+</member>
+<member name="P:Microsoft.FSharp.Core.SR.startCannotBeNaN">
+ <summary>The start of a range cannot be NaN.</summary>
+</member>
+<member name="P:Microsoft.FSharp.Core.SR.resetNotSupported">
+ <summary>Reset is not supported on this enumerator.</summary>
+</member>
+<member name="P:Microsoft.FSharp.Core.SR.QunrecognizedMethodCall">
+ <summary>The parameter is not a recognized method name.</summary>
+</member>
+<member name="P:Microsoft.FSharp.Core.SR.QunexpectedHole">
+ <summary>Unexpected quotation hole in expression.</summary>
+</member>
+<member name="P:Microsoft.FSharp.Core.SR.QtmmVarTypeNotMatchRHS">
+ <summary>Type mismatch when building '{0}': the variable type doesn't match the type of the right-hand-side of a let binding. Expected '{1}', but received type '{2}'.</summary>
+</member>
+<member name="P:Microsoft.FSharp.Core.SR.QtmmTuple">
+ <summary>Type mismatch when building '{0}': mismatched type of argument and tuple element. Expected '{1}', but received type '{2}'.</summary>
+</member>
+<member name="P:Microsoft.FSharp.Core.SR.QtmmTrueAndFalseMustMatch">
+ <summary>Type mismatch when building '{0}': types of true and false branches differ. Expected '{1}', but received type '{2}'.</summary>
+</member>
+<member name="P:Microsoft.FSharp.Core.SR.QtmmLowerUpperBoundMustBeInt">
+ <summary>Type mismatch when building '{0}': lower and upper bounds must be integers. Expected '{1}', but received type '{2}'.</summary>
+</member>
+<member name="P:Microsoft.FSharp.Core.SR.QtmmLoopBodyMustBeLambdaTakingInteger">
+ <summary>Type mismatch when building '{0}': body of the for loop must be lambda taking integer as an argument. Expected '{1}', but received type '{2}'.</summary>
+</member>
+<member name="P:Microsoft.FSharp.Core.SR.QtmmInvalidParam">
+ <summary>Type mismatch when building '{0}': invalid parameter for a method or indexer property. Expected '{1}', but received type '{2}'.</summary>
+</member>
+<member name="P:Microsoft.FSharp.Core.SR.QtmmInitArray">
+ <summary>Type mismatch when building '{0}': initializer doesn't match array type. Expected '{1}', but received type '{2}'.</summary>
+</member>
+<member name="P:Microsoft.FSharp.Core.SR.QtmmIncorrectArgForUnion">
+ <summary>Type mismatch when building '{0}': incorrect argument type for an F# union. Expected '{1}', but received type '{2}'.</summary>
+</member>
+<member name="P:Microsoft.FSharp.Core.SR.QtmmIncorrectArgForRecord">
+ <summary>Type mismatch when building '{0}': incorrect argument type for an F# record. Expected '{1}', but received type '{2}'.</summary>
+</member>
+<member name="P:Microsoft.FSharp.Core.SR.QtmmGuardMustBeBool">
+ <summary>Type mismatch when building '{0}': guard must return boolean. Expected '{1}', but received type '{2}'.</summary>
+</member>
+<member name="P:Microsoft.FSharp.Core.SR.QtmmFunctionArgTypeMismatch">
+ <summary>Type mismatch when building '{0}': function argument type doesn't match. Expected '{1}', but received type '{2}'.</summary>
+</member>
+<member name="P:Microsoft.FSharp.Core.SR.QtmmExprTypeMismatch">
+ <summary>Type mismatch when building '{0}': types of expression does not match. Expected '{1}', but received type '{2}'.</summary>
+</member>
+<member name="P:Microsoft.FSharp.Core.SR.QtmmExprNotMatchTuple">
+ <summary>Type mismatch when building '{0}': expression doesn't match the tuple type. Expected '{1}', but received type '{2}'.</summary>
+</member>
+<member name="P:Microsoft.FSharp.Core.SR.QtmmExpectedFunction">
+ <summary>Type mismatch when building '{0}': expected function type in function application or let binding. Expected '{1}', but received type '{2}'.</summary>
+</member>
+<member name="P:Microsoft.FSharp.Core.SR.QtmmCondMustBeBool">
+ <summary>Type mismatch when building '{0}': condition expression must be of type bool. Expected '{1}', but received type '{2}'.</summary>
+</member>
+<member name="P:Microsoft.FSharp.Core.SR.QtmmBodyMustBeUnit">
+ <summary>Type mismatch when building '{0}': body must return unit. Expected '{1}', but received type '{2}'.</summary>
+</member>
+<member name="P:Microsoft.FSharp.Core.SR.QtmmBadFieldType">
+ <summary>Type mismatch when building '{0}': the type of the field was incorrect. Expected '{1}', but received type '{2}'.</summary>
+</member>
+<member name="P:Microsoft.FSharp.Core.SR.QmissingUnionCase">
+ <summary>Type '{0}' did not have an F# union case named '{1}'.</summary>
+</member>
+<member name="P:Microsoft.FSharp.Core.SR.QmissingRecordField">
+ <summary>Type '{0}' did not have an F# record field named '{1}'.</summary>
+</member>
+<member name="P:Microsoft.FSharp.Core.SR.QinvalidCaseIndex">
+ <summary>Not a valid F# union case index.</summary>
+</member>
+<member name="P:Microsoft.FSharp.Core.SR.QexpectedTwoTypes">
+ <summary>Expected exactly two type arguments.</summary>
+</member>
+<member name="P:Microsoft.FSharp.Core.SR.QexpectedOneType">
+ <summary>Expected exactly one type argument.</summary>
+</member>
+<member name="P:Microsoft.FSharp.Core.SR.privateUnionType">
+ <summary>The type '{0}' is an F# union type but its representation is private. You must specify BindingFlags.NonPublic to access private type representations.</summary>
+</member>
+<member name="P:Microsoft.FSharp.Core.SR.privateRecordType">
+ <summary>The type '{0}' is an F# record type but its representation is private. You must specify BindingFlags.NonPublic to access private type representations.</summary>
+</member>
+<member name="P:Microsoft.FSharp.Core.SR.privateExceptionType">
+ <summary>The type '{0}' is the representation of an F# exception declaration but its representation is private. You must specify BindingFlags.NonPublic to access private type representations.</summary>
+</member>
+<member name="P:Microsoft.FSharp.Core.SR.outOfRange">
+ <summary>The index is outside the legal range.</summary>
+</member>
+<member name="P:Microsoft.FSharp.Core.SR.objIsNullAndNoType">
+ <summary>The object is null and no type was given.  Either pass a non-null object or a non-null type parameter.</summary>
+</member>
+<member name="P:Microsoft.FSharp.Core.SR.objIsNotARecord">
+ <summary>The object is not an F# record value.</summary>
+</member>
+<member name="P:Microsoft.FSharp.Core.SR.nullsNotAllowedInArray">
+ <summary>One of the elements in the array is null.</summary>
+</member>
+<member name="P:Microsoft.FSharp.Core.SR.notUsedForHashing">
+ <summary>This object is for recursive equality calls and cannot be used for hashing.</summary>
+</member>
+<member name="P:Microsoft.FSharp.Core.SR.notEnoughElements">
+ <summary>The input sequence has an insufficient number of elements.</summary>
+</member>
+<member name="P:Microsoft.FSharp.Core.SR.notComparable">
+ <summary>The two objects have different types and are not comparable.</summary>
+</member>
+<member name="P:Microsoft.FSharp.Core.SR.notAUnionType">
+ <summary>Type '{0}' is not an F# union type.</summary>
+</member>
+<member name="P:Microsoft.FSharp.Core.SR.notATupleType">
+ <summary>Type '{0}' is not a tuple type.</summary>
+</member>
+<member name="P:Microsoft.FSharp.Core.SR.notARecordType">
+ <summary>Type '{0}' is not an F# record type.</summary>
+</member>
+<member name="P:Microsoft.FSharp.Core.SR.notAPermutation">
+ <summary>The function did not compute a permutation.</summary>
+</member>
+<member name="P:Microsoft.FSharp.Core.SR.notAnExceptionType">
+ <summary>Type '{0}' is not the representation of an F# exception declaration.</summary>
+</member>
+<member name="P:Microsoft.FSharp.Core.SR.notAFunctionType">
+ <summary>Type '{0}' is not a function type.</summary>
+</member>
+<member name="P:Microsoft.FSharp.Core.SR.nonZeroBasedDisallowed">
+ <summary>Arrays with non-zero base cannot be created on this platform.</summary>
+</member>
+<member name="P:Microsoft.FSharp.Core.SR.checkStaticInit">
+ <summary>The static initialization of a file or type resulted in static data being accessed recursively before it was fully initialized.</summary>
+</member>
+<member name="P:Microsoft.FSharp.Core.SR.checkInit">
+ <summary>The initialization of an object or value resulted in an object or value being accessed recursively before it was fully initialized.</summary>
+</member>
+<member name="P:Microsoft.FSharp.Core.SR.noNegateMinValue">
+ <summary>Negating the minimum value of a twos complement number is invalid.</summary>
+</member>
+<member name="P:Microsoft.FSharp.Core.SR.mismatchIAREnd">
+ <summary>The IAsyncResult object provided does not match this 'End' operation.</summary>
+</member>
+<member name="P:Microsoft.FSharp.Core.SR.mismatchIARCancel">
+ <summary>The IAsyncResult object provided does not match this 'Cancel' operation.</summary>
+</member>
+<member name="P:Microsoft.FSharp.Core.SR.mapCannotBeMutated">
+ <summary>Map values cannot be mutated.</summary>
+</member>
+<member name="P:Microsoft.FSharp.Core.SR.mailboxScanTimedOut">
+ <summary>Mailbox.Scan timed out.</summary>
+</member>
+<member name="P:Microsoft.FSharp.Core.SR.mailboxReceiveTimedOut">
+ <summary>Mailbox.Receive timed out.</summary>
+</member>
+<member name="P:Microsoft.FSharp.Core.SR.mailboxProcessorPostAndReplyTimedOut">
+ <summary>MailboxProcessor.PostAndReply timed out.</summary>
+</member>
+<member name="P:Microsoft.FSharp.Core.SR.mailboxProcessorPostAndAsyncReplyTimedOut">
+ <summary>MailboxProcessor.PostAndAsyncReply timed out.</summary>
+</member>
+<member name="P:Microsoft.FSharp.Core.SR.mailboxProcessorAlreadyStarted">
+ <summary>The MailboxProcessor has already been started.</summary>
+</member>
+<member name="P:Microsoft.FSharp.Core.SR.listsHadDifferentLengths">
+ <summary>The lists had different lengths.</summary>
+</member>
+<member name="P:Microsoft.FSharp.Core.SR.keyNotFound">
+ <summary>The item, key, or index was not found in the collection.</summary>
+</member>
+<member name="P:Microsoft.FSharp.Core.SR.invalidTupleTypes">
+ <summary>This is not a valid tuple type for the F# reflection library.</summary>
+</member>
+<member name="P:Microsoft.FSharp.Core.SR.inputSequenceEmpty">
+ <summary>The input sequence was empty.</summary>
+</member>
+<member name="P:Microsoft.FSharp.Core.SR.inputMustBePositive">
+ <summary>The input must be positive.</summary>
+</member>
+<member name="P:Microsoft.FSharp.Core.SR.inputMustBeNonNegative">
+ <summary>The input must be non-negative.</summary>
+</member>
+<member name="P:Microsoft.FSharp.Core.SR.inputListWasEmpty">
+ <summary>The input list was empty.</summary>
+</member>
+<member name="P:Microsoft.FSharp.Core.SR.indexOutOfBounds">
+ <summary>The index was outside the range of elements in the list.</summary>
+</member>
+<member name="P:Microsoft.FSharp.Core.SR.genericCompareFail1">
+ <summary>Failure during generic comparison: the type '{0}' does not implement the System.IComparable interface. This error may be arise from the use of a function such as 'compare', 'max' or 'min' or a data structure such as 'Set' or 'Map' whose keys contain instances of this type.</summary>
+</member>
+<member name="P:Microsoft.FSharp.Core.SR.failedReadEnoughBytes">
+ <summary>Failed to read enough bytes from the stream.</summary>
+</member>
+<member name="P:Microsoft.FSharp.Core.SR.enumerationPastIntMaxValue">
+ <summary>Enumeration based on System.Int32 exceeded System.Int32.MaxValue.</summary>
+</member>
+<member name="P:Microsoft.FSharp.Core.SR.setContainsNoElements">
+ <summary>Set contains no elements.</summary>
+</member>
+<member name="P:Microsoft.FSharp.Core.SR.enumerationNotStarted">
+ <summary>Enumeration has not started. Call MoveNext.</summary>
+</member>
+<member name="P:Microsoft.FSharp.Core.SR.enumerationAlreadyFinished">
+ <summary>Enumeration already finished.</summary>
+</member>
+<member name="P:Microsoft.FSharp.Core.SR.endCannotBeNaN">
+ <summary>The end of a range cannot be NaN.</summary>
+</member>
+<member name="P:Microsoft.FSharp.Core.SR.dyInvOpMultOverload">
+ <summary>Dynamic invocation of op_Multiply involving overloading is not supported.</summary>
+</member>
+<member name="P:Microsoft.FSharp.Core.SR.dyInvOpMultCoerce">
+ <summary>Dynamic invocation of op_Multiply involving coercions is not supported.</summary>
+</member>
+<member name="P:Microsoft.FSharp.Core.SR.dyInvOpAddOverload">
+ <summary>Dynamic invocation of op_Addition involving overloading is not supported.</summary>
+</member>
+<member name="P:Microsoft.FSharp.Core.SR.dyInvOpAddCoerce">
+ <summary>Dynamic invocation of op_Addition involving coercions is not supported.</summary>
+</member>
+<member name="P:Microsoft.FSharp.Core.SR.dyInvDivByIntCoerce">
+ <summary>Dynamic invocation of DivideByInt involving coercions is not supported.</summary>
+</member>
+<member name="P:Microsoft.FSharp.Core.SR.delegateExpected">
+ <summary>Expecting delegate type.</summary>
+</member>
+<member name="P:Microsoft.FSharp.Core.SR.badFormatString">
+ <summary>Input string was not in a correct format.</summary>
+</member>
+<member name="P:Microsoft.FSharp.Core.SR.arrayWasEmpty">
+ <summary>The input array was empty.</summary>
+</member>
+<member name="P:Microsoft.FSharp.Core.SR.arraysHadDifferentLengths">
+ <summary>The arrays have different lengths.</summary>
+</member>
+<member name="P:Microsoft.FSharp.Core.SR.addressOpNotFirstClass">
+ <summary>First class uses of address-of operators are not permitted.</summary>
+</member>
+<member name="P:Microsoft.FSharp.Core.SR.matchCasesIncomplete">
+ <summary>The match cases were incomplete</summary>
 </member>
 <member name="M:Microsoft.FSharp.Core.Operators.KeyValuePattern``2(System.Collections.Generic.KeyValuePair{``0,``1})">
  <summary>An active pattern to match values of type <c>System.Collections.Generic.KeyValuePair</c></summary>
@@ -9715,7 +10168,7 @@
  <param name="finish">The index of the last character of the slice.</param>
  <returns>The substring from the given indices.</returns>
 </member>
-<member name="M:Microsoft.FSharp.Core.Operators.OperatorIntrinsics.SetArraySlice4D``1(``0[0:,0:,0:,0:],Microsoft.FSharp.Core.FSharpOption{System.Int32},Microsoft.FSharp.Core.FSharpOption{System.Int32},Microsoft.FSharp.Core.FSharpOption{System.Int32},Microsoft.FSharp.Core.FSharpOption{System.Int32},Microsoft.FSharp.Core.FSharpOption{System.Int32},Microsoft.FSharp.Core.FSharpOption{System.Int32},Microsoft.FSharp.Core.FSharpOption{System.Int32},Microsoft.FSharp.Core.FSharpOption{System.Int32},``0[0:,0:,0:,0:])">
+<member name="M:Microsoft.FSharp.Core.Operators.OperatorIntrinsics.SetArraySlice4D``1(``0[0:, 0:, 0:, 0:],Microsoft.FSharp.Core.FSharpOption{System.Int32},Microsoft.FSharp.Core.FSharpOption{System.Int32},Microsoft.FSharp.Core.FSharpOption{System.Int32},Microsoft.FSharp.Core.FSharpOption{System.Int32},Microsoft.FSharp.Core.FSharpOption{System.Int32},Microsoft.FSharp.Core.FSharpOption{System.Int32},Microsoft.FSharp.Core.FSharpOption{System.Int32},Microsoft.FSharp.Core.FSharpOption{System.Int32},``0[0:, 0:, 0:, 0:])">
  <summary>Sets a slice of an array</summary>
  <param name="target">The target array.</param>
  <param name="start1">The start index of the first dimension.</param>
@@ -9728,7 +10181,7 @@
  <param name="finish4">The end index of the fourth dimension.</param>
  <param name="source">The source array.</param>
 </member>
-<member name="M:Microsoft.FSharp.Core.Operators.OperatorIntrinsics.GetArraySlice4D``1(``0[0:,0:,0:,0:],Microsoft.FSharp.Core.FSharpOption{System.Int32},Microsoft.FSharp.Core.FSharpOption{System.Int32},Microsoft.FSharp.Core.FSharpOption{System.Int32},Microsoft.FSharp.Core.FSharpOption{System.Int32},Microsoft.FSharp.Core.FSharpOption{System.Int32},Microsoft.FSharp.Core.FSharpOption{System.Int32},Microsoft.FSharp.Core.FSharpOption{System.Int32},Microsoft.FSharp.Core.FSharpOption{System.Int32})">
+<member name="M:Microsoft.FSharp.Core.Operators.OperatorIntrinsics.GetArraySlice4D``1(``0[0:, 0:, 0:, 0:],Microsoft.FSharp.Core.FSharpOption{System.Int32},Microsoft.FSharp.Core.FSharpOption{System.Int32},Microsoft.FSharp.Core.FSharpOption{System.Int32},Microsoft.FSharp.Core.FSharpOption{System.Int32},Microsoft.FSharp.Core.FSharpOption{System.Int32},Microsoft.FSharp.Core.FSharpOption{System.Int32},Microsoft.FSharp.Core.FSharpOption{System.Int32},Microsoft.FSharp.Core.FSharpOption{System.Int32})">
  <summary>Gets a slice of an array</summary>
  <param name="source">The source array.</param>
  <param name="start1">The start index of the first dimension.</param>
@@ -9741,7 +10194,7 @@
  <param name="finish4">The end index of the fourth dimension.</param>
  <returns>The four dimensional sub array from the given indices.</returns>
 </member>
-<member name="M:Microsoft.FSharp.Core.Operators.OperatorIntrinsics.SetArraySlice3D``1(``0[0:,0:,0:],Microsoft.FSharp.Core.FSharpOption{System.Int32},Microsoft.FSharp.Core.FSharpOption{System.Int32},Microsoft.FSharp.Core.FSharpOption{System.Int32},Microsoft.FSharp.Core.FSharpOption{System.Int32},Microsoft.FSharp.Core.FSharpOption{System.Int32},Microsoft.FSharp.Core.FSharpOption{System.Int32},``0[0:,0:,0:])">
+<member name="M:Microsoft.FSharp.Core.Operators.OperatorIntrinsics.SetArraySlice3D``1(``0[0:, 0:, 0:],Microsoft.FSharp.Core.FSharpOption{System.Int32},Microsoft.FSharp.Core.FSharpOption{System.Int32},Microsoft.FSharp.Core.FSharpOption{System.Int32},Microsoft.FSharp.Core.FSharpOption{System.Int32},Microsoft.FSharp.Core.FSharpOption{System.Int32},Microsoft.FSharp.Core.FSharpOption{System.Int32},``0[0:, 0:, 0:])">
  <summary>Sets a slice of an array</summary>
  <param name="target">The target array.</param>
  <param name="start1">The start index of the first dimension.</param>
@@ -9752,7 +10205,7 @@
  <param name="finish3">The end index of the third dimension.</param>
  <param name="source">The source array.</param>
 </member>
-<member name="M:Microsoft.FSharp.Core.Operators.OperatorIntrinsics.GetArraySlice3D``1(``0[0:,0:,0:],Microsoft.FSharp.Core.FSharpOption{System.Int32},Microsoft.FSharp.Core.FSharpOption{System.Int32},Microsoft.FSharp.Core.FSharpOption{System.Int32},Microsoft.FSharp.Core.FSharpOption{System.Int32},Microsoft.FSharp.Core.FSharpOption{System.Int32},Microsoft.FSharp.Core.FSharpOption{System.Int32})">
+<member name="M:Microsoft.FSharp.Core.Operators.OperatorIntrinsics.GetArraySlice3D``1(``0[0:, 0:, 0:],Microsoft.FSharp.Core.FSharpOption{System.Int32},Microsoft.FSharp.Core.FSharpOption{System.Int32},Microsoft.FSharp.Core.FSharpOption{System.Int32},Microsoft.FSharp.Core.FSharpOption{System.Int32},Microsoft.FSharp.Core.FSharpOption{System.Int32},Microsoft.FSharp.Core.FSharpOption{System.Int32})">
  <summary>Gets a slice of an array</summary>
  <param name="source">The source array.</param>
  <param name="start1">The start index of the first dimension.</param>
@@ -9763,7 +10216,7 @@
  <param name="finish3">The end index of the third dimension.</param>
  <returns>The three dimensional sub array from the given indices.</returns>
 </member>
-<member name="M:Microsoft.FSharp.Core.Operators.OperatorIntrinsics.SetArraySlice2DFixed2``1(``0[0:,0:],Microsoft.FSharp.Core.FSharpOption{System.Int32},Microsoft.FSharp.Core.FSharpOption{System.Int32},System.Int32,``0[])">
+<member name="M:Microsoft.FSharp.Core.Operators.OperatorIntrinsics.SetArraySlice2DFixed2``1(``0[0:, 0:],Microsoft.FSharp.Core.FSharpOption{System.Int32},Microsoft.FSharp.Core.FSharpOption{System.Int32},System.Int32,``0[])">
  <summary>Sets a vector slice of a 2D array. The index of the second dimension is fixed.</summary>
  <param name="target">The target array.</param>
  <param name="start1">The start index of the first dimension.</param>
@@ -9771,7 +10224,7 @@
  <param name="index2">The index of the second dimension.</param>
  <param name="source">The source array.</param>
 </member>
-<member name="M:Microsoft.FSharp.Core.Operators.OperatorIntrinsics.SetArraySlice2DFixed1``1(``0[0:,0:],System.Int32,Microsoft.FSharp.Core.FSharpOption{System.Int32},Microsoft.FSharp.Core.FSharpOption{System.Int32},``0[])">
+<member name="M:Microsoft.FSharp.Core.Operators.OperatorIntrinsics.SetArraySlice2DFixed1``1(``0[0:, 0:],System.Int32,Microsoft.FSharp.Core.FSharpOption{System.Int32},Microsoft.FSharp.Core.FSharpOption{System.Int32},``0[])">
  <summary>Sets a vector slice of a 2D array. The index of the first dimension is fixed.</summary>
  <param name="target">The target array.</param>
  <param name="index1">The index of the first dimension.</param>
@@ -9779,7 +10232,7 @@
  <param name="finish2">The end index of the second dimension.</param>
  <param name="source">The source array.</param>
 </member>
-<member name="M:Microsoft.FSharp.Core.Operators.OperatorIntrinsics.SetArraySlice2D``1(``0[0:,0:],Microsoft.FSharp.Core.FSharpOption{System.Int32},Microsoft.FSharp.Core.FSharpOption{System.Int32},Microsoft.FSharp.Core.FSharpOption{System.Int32},Microsoft.FSharp.Core.FSharpOption{System.Int32},``0[0:,0:])">
+<member name="M:Microsoft.FSharp.Core.Operators.OperatorIntrinsics.SetArraySlice2D``1(``0[0:, 0:],Microsoft.FSharp.Core.FSharpOption{System.Int32},Microsoft.FSharp.Core.FSharpOption{System.Int32},Microsoft.FSharp.Core.FSharpOption{System.Int32},Microsoft.FSharp.Core.FSharpOption{System.Int32},``0[0:, 0:])">
  <summary>Sets a region slice of an array</summary>
  <param name="target">The target array.</param>
  <param name="start1">The start index of the first dimension.</param>
@@ -9788,7 +10241,7 @@
  <param name="finish2">The end index of the second dimension.</param>
  <param name="source">The source array.</param>
 </member>
-<member name="M:Microsoft.FSharp.Core.Operators.OperatorIntrinsics.GetArraySlice2DFixed2``1(``0[0:,0:],Microsoft.FSharp.Core.FSharpOption{System.Int32},Microsoft.FSharp.Core.FSharpOption{System.Int32},System.Int32)">
+<member name="M:Microsoft.FSharp.Core.Operators.OperatorIntrinsics.GetArraySlice2DFixed2``1(``0[0:, 0:],Microsoft.FSharp.Core.FSharpOption{System.Int32},Microsoft.FSharp.Core.FSharpOption{System.Int32},System.Int32)">
  <summary>Gets a vector slice of a 2D array. The index of the second dimension is fixed.</summary>
  <param name="source">The source array.</param>
  <param name="start1">The start index of the first dimension.</param>
@@ -9796,7 +10249,7 @@
  <param name="index2">The fixed index of the second dimension.</param>
  <returns>The sub array from the input indices.</returns>
 </member>
-<member name="M:Microsoft.FSharp.Core.Operators.OperatorIntrinsics.GetArraySlice2DFixed1``1(``0[0:,0:],System.Int32,Microsoft.FSharp.Core.FSharpOption{System.Int32},Microsoft.FSharp.Core.FSharpOption{System.Int32})">
+<member name="M:Microsoft.FSharp.Core.Operators.OperatorIntrinsics.GetArraySlice2DFixed1``1(``0[0:, 0:],System.Int32,Microsoft.FSharp.Core.FSharpOption{System.Int32},Microsoft.FSharp.Core.FSharpOption{System.Int32})">
  <summary>Gets a vector slice of a 2D array. The index of the first dimension is fixed.</summary>
  <param name="source">The source array.</param>
  <param name="index1">The index of the first dimension.</param>
@@ -9804,7 +10257,7 @@
  <param name="finish2">The end index of the second dimension.</param>
  <returns>The sub array from the input indices.</returns>
 </member>
-<member name="M:Microsoft.FSharp.Core.Operators.OperatorIntrinsics.GetArraySlice2D``1(``0[0:,0:],Microsoft.FSharp.Core.FSharpOption{System.Int32},Microsoft.FSharp.Core.FSharpOption{System.Int32},Microsoft.FSharp.Core.FSharpOption{System.Int32},Microsoft.FSharp.Core.FSharpOption{System.Int32})">
+<member name="M:Microsoft.FSharp.Core.Operators.OperatorIntrinsics.GetArraySlice2D``1(``0[0:, 0:],Microsoft.FSharp.Core.FSharpOption{System.Int32},Microsoft.FSharp.Core.FSharpOption{System.Int32},Microsoft.FSharp.Core.FSharpOption{System.Int32},Microsoft.FSharp.Core.FSharpOption{System.Int32})">
  <summary>Gets a region slice of an array</summary>
  <param name="source">The source array.</param>
  <param name="start1">The start index of the first dimension.</param>
@@ -10250,27 +10703,27 @@
 <member name="T:Microsoft.FSharp.Core.LanguagePrimitives.HashCompare">
  <summary>The F# compiler emits calls to some of the functions in this module as part of the compiled form of some language constructs</summary>
 </member>
-<member name="M:Microsoft.FSharp.Core.LanguagePrimitives.IntrinsicFunctions.SetArray4D``1(``0[0:,0:,0:,0:],System.Int32,System.Int32,System.Int32,System.Int32,``0)">
+<member name="M:Microsoft.FSharp.Core.LanguagePrimitives.IntrinsicFunctions.SetArray4D``1(``0[0:, 0:, 0:, 0:],System.Int32,System.Int32,System.Int32,System.Int32,``0)">
 <summary>
  The standard overloaded associative (4-indexed) mutation operator
 </summary>
 </member>
-<member name="M:Microsoft.FSharp.Core.LanguagePrimitives.IntrinsicFunctions.SetArray3D``1(``0[0:,0:,0:],System.Int32,System.Int32,System.Int32,``0)">
+<member name="M:Microsoft.FSharp.Core.LanguagePrimitives.IntrinsicFunctions.SetArray3D``1(``0[0:, 0:, 0:],System.Int32,System.Int32,System.Int32,``0)">
  <summary>The standard overloaded associative (3-indexed) mutation operator</summary>
 </member>
-<member name="M:Microsoft.FSharp.Core.LanguagePrimitives.IntrinsicFunctions.SetArray2D``1(``0[0:,0:],System.Int32,System.Int32,``0)">
+<member name="M:Microsoft.FSharp.Core.LanguagePrimitives.IntrinsicFunctions.SetArray2D``1(``0[0:, 0:],System.Int32,System.Int32,``0)">
  <summary>The standard overloaded associative (2-indexed) mutation operator</summary>
 </member>
 <member name="M:Microsoft.FSharp.Core.LanguagePrimitives.IntrinsicFunctions.SetArray``1(``0[],System.Int32,``0)">
  <summary>The standard overloaded associative (indexed) mutation operator</summary>
 </member>
-<member name="M:Microsoft.FSharp.Core.LanguagePrimitives.IntrinsicFunctions.GetArray4D``1(``0[0:,0:,0:,0:],System.Int32,System.Int32,System.Int32,System.Int32)">
+<member name="M:Microsoft.FSharp.Core.LanguagePrimitives.IntrinsicFunctions.GetArray4D``1(``0[0:, 0:, 0:, 0:],System.Int32,System.Int32,System.Int32,System.Int32)">
  <summary>The standard overloaded associative (4-indexed) lookup operator</summary>
 </member>
-<member name="M:Microsoft.FSharp.Core.LanguagePrimitives.IntrinsicFunctions.GetArray3D``1(``0[0:,0:,0:],System.Int32,System.Int32,System.Int32)">
+<member name="M:Microsoft.FSharp.Core.LanguagePrimitives.IntrinsicFunctions.GetArray3D``1(``0[0:, 0:, 0:],System.Int32,System.Int32,System.Int32)">
  <summary>The standard overloaded associative (3-indexed) lookup operator</summary>
 </member>
-<member name="M:Microsoft.FSharp.Core.LanguagePrimitives.IntrinsicFunctions.GetArray2D``1(``0[0:,0:],System.Int32,System.Int32)">
+<member name="M:Microsoft.FSharp.Core.LanguagePrimitives.IntrinsicFunctions.GetArray2D``1(``0[0:, 0:],System.Int32,System.Int32)">
  <summary>The standard overloaded associative (2-indexed) lookup operator</summary>
 </member>
 <member name="M:Microsoft.FSharp.Core.LanguagePrimitives.IntrinsicFunctions.GetArray``1(``0[],System.Int32)">

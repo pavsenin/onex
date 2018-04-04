@@ -1,10 +1,13 @@
 ﻿open System
-open API
+
+open FSharp.Configuration
+type Settings = AppSettings<"App.config">
+let connectionString = Settings.ConnectionStrings.Onex
 
 [<EntryPoint>]
 let main argv =
     let now = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss.fff")
-    receiveAndInsertBets now
+    API.receiveAndInsertBets connectionString now
 
     (*
     let results = getResults "\"2018-03-17\""

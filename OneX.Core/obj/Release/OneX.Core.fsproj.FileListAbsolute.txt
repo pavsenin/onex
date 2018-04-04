@@ -20,7 +20,6 @@ C:\git\pavsenin\onex\OneX.Core\bin\Release\NodaTime.xml
 C:\git\pavsenin\onex\OneX.Core\bin\Release\SharpYaml.xml
 C:\git\pavsenin\onex\OneX.Core\obj\Release\OneX.Core.dll
 C:\git\pavsenin\onex\OneX.Core\obj\Release\OneX.Core.pdb
-d:\git\pavsenin\OneX\OneX.Core\bin\Release\OneX.Core.dll.config
 d:\git\pavsenin\OneX\OneX.Core\bin\Release\OneX.Core.XML
 d:\git\pavsenin\OneX\OneX.Core\bin\Release\OneX.Core.dll
 d:\git\pavsenin\OneX\OneX.Core\bin\Release\OneX.Core.pdb
@@ -42,3 +41,17 @@ d:\git\pavsenin\OneX\OneX.Core\bin\Release\NodaTime.xml
 d:\git\pavsenin\OneX\OneX.Core\bin\Release\SharpYaml.xml
 d:\git\pavsenin\OneX\OneX.Core\obj\Release\OneX.Core.dll
 d:\git\pavsenin\OneX\OneX.Core\obj\Release\OneX.Core.pdb
+D:\git\pavsenin\OneX\OneX.Core\bin\Release\cs\FSharp.Core.resources.dll
+D:\git\pavsenin\OneX\OneX.Core\bin\Release\de\FSharp.Core.resources.dll
+D:\git\pavsenin\OneX\OneX.Core\bin\Release\en\FSharp.Core.resources.dll
+D:\git\pavsenin\OneX\OneX.Core\bin\Release\es\FSharp.Core.resources.dll
+D:\git\pavsenin\OneX\OneX.Core\bin\Release\fr\FSharp.Core.resources.dll
+D:\git\pavsenin\OneX\OneX.Core\bin\Release\it\FSharp.Core.resources.dll
+D:\git\pavsenin\OneX\OneX.Core\bin\Release\ja\FSharp.Core.resources.dll
+D:\git\pavsenin\OneX\OneX.Core\bin\Release\ko\FSharp.Core.resources.dll
+D:\git\pavsenin\OneX\OneX.Core\bin\Release\pl\FSharp.Core.resources.dll
+D:\git\pavsenin\OneX\OneX.Core\bin\Release\pt-BR\FSharp.Core.resources.dll
+D:\git\pavsenin\OneX\OneX.Core\bin\Release\ru\FSharp.Core.resources.dll
+D:\git\pavsenin\OneX\OneX.Core\bin\Release\tr\FSharp.Core.resources.dll
+D:\git\pavsenin\OneX\OneX.Core\bin\Release\zh-Hans\FSharp.Core.resources.dll
+D:\git\pavsenin\OneX\OneX.Core\bin\Release\zh-Hant\FSharp.Core.resources.dll
