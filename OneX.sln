@@ -1,13 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.27130.2010
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "OneX", "OneX.fsproj", "{97EA59F0-E4E9-4776-A92E-56DE1A582CBF}"
 EndProject
 Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "OneX.Core", "OneX.Core\OneX.Core.fsproj", "{F9700CC1-31F0-40E3-85A4-7BE40EC19642}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OneX.WebApp", "OneX.WebApp\OneX.WebApp.csproj", "{8D1AB0C9-E6E3-46F1-80B5-7E32A3A8133C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApp", "WebApp\WebApp.csproj", "{0EC5B870-824C-48F6-B9BC-4ED91370A0E4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,10 +23,10 @@ Global
 		{F9700CC1-31F0-40E3-85A4-7BE40EC19642}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F9700CC1-31F0-40E3-85A4-7BE40EC19642}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F9700CC1-31F0-40E3-85A4-7BE40EC19642}.Release|Any CPU.Build.0 = Release|Any CPU
-		{8D1AB0C9-E6E3-46F1-80B5-7E32A3A8133C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8D1AB0C9-E6E3-46F1-80B5-7E32A3A8133C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8D1AB0C9-E6E3-46F1-80B5-7E32A3A8133C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8D1AB0C9-E6E3-46F1-80B5-7E32A3A8133C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0EC5B870-824C-48F6-B9BC-4ED91370A0E4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0EC5B870-824C-48F6-B9BC-4ED91370A0E4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0EC5B870-824C-48F6-B9BC-4ED91370A0E4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0EC5B870-824C-48F6-B9BC-4ED91370A0E4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

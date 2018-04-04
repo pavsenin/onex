@@ -1,0 +1,32 @@
+c:\users\avsenin.pavel\documents\visual studio 2010\Projects\WebApp\WebApp\bin\WebApp.dll
+c:\users\avsenin.pavel\documents\visual studio 2010\Projects\WebApp\WebApp\bin\WebApp.pdb
+c:\users\avsenin.pavel\documents\visual studio 2010\Projects\WebApp\WebApp\obj\Debug\WebApp.dll
+c:\users\avsenin.pavel\documents\visual studio 2010\Projects\WebApp\WebApp\obj\Debug\WebApp.pdb
+C:\Users\Avsenin.Pavel\Documents\Visual Studio 2010\Projects\WebApp\WebApp\bin\WebApp.dll.config
+C:\Users\Avsenin.Pavel\Documents\Visual Studio 2010\Projects\WebApp\WebApp\obj\Debug\WebApp.csprojResolveAssemblyReference.cache
+D:\git\pavsenin\OneX\WebApp\bin\WebApp.dll.config
+D:\git\pavsenin\OneX\WebApp\bin\WebApp.dll
+D:\git\pavsenin\OneX\WebApp\bin\WebApp.pdb
+D:\git\pavsenin\OneX\WebApp\obj\Debug\WebApp.csprojResolveAssemblyReference.cache
+D:\git\pavsenin\OneX\WebApp\obj\Debug\WebApp.csproj.CoreCompileInputs.cache
+D:\git\pavsenin\OneX\WebApp\obj\Debug\WebApp.dll
+D:\git\pavsenin\OneX\WebApp\obj\Debug\WebApp.pdb
+D:\git\pavsenin\OneX\WebApp\bin\OneX.Core.dll
+D:\git\pavsenin\OneX\WebApp\bin\FSharp.Core.dll
+D:\git\pavsenin\OneX\WebApp\bin\FSharp.Data.dll
+D:\git\pavsenin\OneX\WebApp\bin\FSharp.Configuration.dll
+D:\git\pavsenin\OneX\WebApp\bin\SharpYaml.dll
+D:\git\pavsenin\OneX\WebApp\bin\OneX.Core.pdb
+D:\git\pavsenin\OneX\WebApp\bin\OneX.Core.xml
+D:\git\pavsenin\OneX\WebApp\bin\OneX.Core.dll.config
+D:\git\pavsenin\OneX\WebApp\bin\FSharp.Core.xml
+D:\git\pavsenin\OneX\WebApp\bin\FSharp.Data.pdb
+D:\git\pavsenin\OneX\WebApp\bin\FSharp.Data.xml
+D:\git\pavsenin\OneX\WebApp\bin\FSharp.Configuration.xml
+D:\git\pavsenin\OneX\WebApp\bin\SharpYaml.xml
+D:\git\pavsenin\OneX\WebApp\bin\Newtonsoft.Json.dll
+D:\git\pavsenin\OneX\WebApp\bin\Newtonsoft.Json.FSharp.dll
+D:\git\pavsenin\OneX\WebApp\bin\NodaTime.dll
+D:\git\pavsenin\OneX\WebApp\bin\Newtonsoft.Json.xml
+D:\git\pavsenin\OneX\WebApp\bin\Newtonsoft.Json.FSharp.xml
+D:\git\pavsenin\OneX\WebApp\bin\NodaTime.xml
