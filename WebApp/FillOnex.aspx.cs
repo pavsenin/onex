@@ -12,9 +12,8 @@ namespace WebApp
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            var now = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss.fff");
             var connectionString = ConfigurationManager.ConnectionStrings["Onex"].ConnectionString;
-            API.receiveAndInsertBets(connectionString, now);
+            API.receiveAndInsertBets(connectionString, DateTime.Now);
         }
     }
 }

@@ -4,6 +4,7 @@ open System.Data.SqlClient
 open Utils
 open Domain
 open System.Collections.Generic
+open System
 
 let connectionStrings = Dictionary()
 
@@ -18,18 +19,18 @@ let executeMulti commands exec =
                 try
                     let cmd = new SqlCommand(command, conn)
                     cmd.CommandTimeout <- 0
-                    Some(exec cmd)
+                    Success(exec cmd)
                 with
-                    _ -> None
+                   ex -> Failure ex.Message
             )
         with
-            _ -> []
+            ex -> [Failure ex.Message]
     finally
         conn.Close()
 
 let execute command exec =
     match executeMulti [command] exec with
-    | [] -> None
+    | [] -> Failure "Unknown error"
     | h::_ -> h
 
 let executeNonQuery command func =
@@ -53,7 +54,7 @@ let toMatchInsertValue (id, leagueID, team1ID, team2ID, time) =
     sprintf "(%d, %d, %d, %d, '%s')" id leagueID team1ID team2ID time
 
 let toBetInsertValue (matchID, betID, param, value, received) =
-    let paramString = param |>> (fun p -> p.ToString()) |> defArg "NULL"
+    let paramString = param |>> (fun (p:float) -> p.ToString(floatFormat)) |> defArg "NULL"
     sprintf "(%d, %d, %s, %f, '%s')" matchID betID paramString value received
 
 let toInsertCommand vs map start =
@@ -94,7 +95,7 @@ let insertNewValues selectCommand insertCommand (values:'T list) contains =
     let existingSet =
         selectCommand
         |> getDBIntValues
-        |> defArg []
+        |> defArgr []
         |> HashSet
     set.RemoveWhere (fun value -> contains existingSet value) |> ignore
     insertValues insertCommand set
@@ -123,7 +124,8 @@ let toDBBet = function
     | IT2L param -> Some (14, Some param)
     | _ -> None
 
-let toDBMatch id now games (teams, matches, bets) =
+let toDBMatch id (now:DateTime) games (teams, matches, bets) =
+    let nowString = now.ToString(dateTimeFormat)
     let newBets =
         games
         |> List.collect (fun (_, bets) -> bets)
@@ -131,7 +133,7 @@ let toDBMatch id now games (teams, matches, bets) =
             let dbBet = toDBBet betType
             dbBet |>> (fun (t, p) -> (t, p, v))
         )
-        |> List.map (fun (t, p, v) -> (id, t, p, v, now))
+        |> List.map (fun (t, p, v) -> (id, t, p, v, nowString))
         |> List.append bets
     (teams, matches, newBets)
 

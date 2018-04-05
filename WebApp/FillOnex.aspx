@@ -9,7 +9,7 @@
 <body>
     <form id="form1" runat="server">
     <div>
-        <h1>Done</h1>
+        <asp:Label ID="OutputText" Text="Done" runat="server" AutoPostBack="true" ></asp:Label>
     </div>
     </form>
 </body>

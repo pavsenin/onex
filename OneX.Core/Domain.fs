@@ -8,6 +8,7 @@ open FSharp.Data.JsonExtensions
 open Newtonsoft.Json
 open System.Text
 open Utils
+open System.Globalization
 
 type BetType =
     | UnBet
@@ -25,6 +26,8 @@ type GameType =
     | X12 | DX12
     | Total | IndTotal1 | IndTotal2
 
+let dateTimeFormat = "yyyy-MM-dd HH:mm:ss.fff"
+let floatFormat = NumberFormatInfo(NumberDecimalSeparator=".")
 
 let chl, eul, rfpl, apl, bundes, primera, serieA, fl1 =
     "UEFA-Champions-League", "UEFA-Europa-League", "Russia-Premier-League", "England-Premier-League",
@@ -54,7 +57,8 @@ let fromUnixTimestamp secs =
     let origin = new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc)
     let time = origin.AddSeconds secs
     let zone = TimeZoneInfo.FindSystemTimeZoneById("Russian Standard Time")
-    TimeZoneInfo.ConvertTime(time, zone)
+    TimeZoneInfo.ConvertTime(time, zone).ToString(dateTimeFormat)
+
 let asF (jsonValue:JsonValue) = jsonValue.AsFloat()
 
 type TreeItemViewModel = { text : string; children : TreeItemViewModel list }
