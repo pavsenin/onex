@@ -1,4 +1,3 @@
-C:\git\pavsenin\onex\OneX.Core\bin\Release\OneX.Core.dll.config
 C:\git\pavsenin\onex\OneX.Core\bin\Release\OneX.Core.XML
 C:\git\pavsenin\onex\OneX.Core\bin\Release\OneX.Core.dll
 C:\git\pavsenin\onex\OneX.Core\bin\Release\OneX.Core.pdb
@@ -10,7 +9,6 @@ C:\git\pavsenin\onex\OneX.Core\bin\Release\Newtonsoft.Json.FSharp.dll
 C:\git\pavsenin\onex\OneX.Core\bin\Release\NodaTime.dll
 C:\git\pavsenin\onex\OneX.Core\bin\Release\SharpYaml.dll
 C:\git\pavsenin\onex\OneX.Core\bin\Release\FSharp.Configuration.xml
-C:\git\pavsenin\onex\OneX.Core\bin\Release\FSharp.Core.xml
 C:\git\pavsenin\onex\OneX.Core\bin\Release\FSharp.Data.pdb
 C:\git\pavsenin\onex\OneX.Core\bin\Release\FSharp.Data.xml
 C:\git\pavsenin\onex\OneX.Core\bin\Release\Newtonsoft.Json.xml
@@ -55,3 +53,4 @@ D:\git\pavsenin\OneX\OneX.Core\bin\Release\ru\FSharp.Core.resources.dll
 D:\git\pavsenin\OneX\OneX.Core\bin\Release\tr\FSharp.Core.resources.dll
 D:\git\pavsenin\OneX\OneX.Core\bin\Release\zh-Hans\FSharp.Core.resources.dll
 D:\git\pavsenin\OneX\OneX.Core\bin\Release\zh-Hant\FSharp.Core.resources.dll
+C:\git\pavsenin\onex\OneX.Core\obj\Release\OneX.Core.fsproj.CoreCompileInputs.cache

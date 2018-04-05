@@ -5,7 +5,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
 -->
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
-    <TimeStampOfAssociatedLegacyPublishXmlFile>2018-04-04T14:29:14.5261022+03:00</TimeStampOfAssociatedLegacyPublishXmlFile>
+    <TimeStampOfAssociatedLegacyPublishXmlFile>2018-04-05T20:49:32.7834732+03:00</TimeStampOfAssociatedLegacyPublishXmlFile>
     <_PublishTargetUrl>C:\Users\Avsenin.Pavel\Documents\Visual Studio 2010\Projects\WebApp\WebApp\publish</_PublishTargetUrl>
   </PropertyGroup>
   <ItemGroup>

@@ -6,26 +6,26 @@ by editing this MSBuild file. In order to learn more about this please visit htt
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <TimeStampOfAssociatedLegacyPublishXmlFile />
-    <_PublishTargetUrl>D:\git\pavsenin\OneX\publish</_PublishTargetUrl>
+    <_PublishTargetUrl>c:\git\pavsenin\OneX\publish</_PublishTargetUrl>
   </PropertyGroup>
   <ItemGroup>
     <File Include="About.aspx">
-      <publishTime>04/04/2018 14:28:27</publishTime>
+      <publishTime>04/05/2018 20:49:32</publishTime>
     </File>
     <File Include="Account/ChangePassword.aspx">
-      <publishTime>04/04/2018 14:28:27</publishTime>
+      <publishTime>04/05/2018 20:49:32</publishTime>
     </File>
     <File Include="Account/ChangePasswordSuccess.aspx">
-      <publishTime>04/04/2018 14:28:27</publishTime>
+      <publishTime>04/05/2018 20:49:32</publishTime>
     </File>
     <File Include="Account/Login.aspx">
-      <publishTime>04/04/2018 14:28:27</publishTime>
+      <publishTime>04/05/2018 20:49:32</publishTime>
     </File>
     <File Include="Account/Register.aspx">
-      <publishTime>04/04/2018 14:28:27</publishTime>
+      <publishTime>04/05/2018 20:49:32</publishTime>
     </File>
     <File Include="Account/Web.config">
-      <publishTime>04/04/2018 14:28:27</publishTime>
+      <publishTime>04/05/2018 22:43:52</publishTime>
     </File>
     <File Include="bin/cs/FSharp.Core.resources.dll">
       <publishTime>01/25/2018 13:45:30</publishTime>
@@ -43,13 +43,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>01/25/2018 13:45:30</publishTime>
     </File>
     <File Include="bin/FSharp.Core.dll">
-      <publishTime>01/25/2018 13:45:30</publishTime>
+      <publishTime>04/05/2018 20:49:33</publishTime>
     </File>
     <File Include="bin/FSharp.Data.dll">
-      <publishTime>11/13/2017 11:33:19</publishTime>
+      <publishTime>03/25/2018 18:36:03</publishTime>
     </File>
     <File Include="bin/FSharp.Data.pdb">
-      <publishTime>11/13/2017 11:33:19</publishTime>
+      <publishTime>03/25/2018 18:36:03</publishTime>
     </File>
     <File Include="bin/it/FSharp.Core.resources.dll">
       <publishTime>01/25/2018 13:45:30</publishTime>
@@ -61,19 +61,19 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>01/25/2018 13:45:30</publishTime>
     </File>
     <File Include="bin/Newtonsoft.Json.dll">
-      <publishTime>11/14/2017 08:56:34</publishTime>
+      <publishTime>03/25/2018 18:36:03</publishTime>
     </File>
     <File Include="bin/Newtonsoft.Json.FSharp.dll">
-      <publishTime>11/14/2017 08:56:35</publishTime>
+      <publishTime>03/25/2018 18:36:03</publishTime>
     </File>
     <File Include="bin/NodaTime.dll">
-      <publishTime>11/14/2017 08:56:35</publishTime>
+      <publishTime>03/25/2018 18:36:03</publishTime>
     </File>
     <File Include="bin/OneX.Core.dll">
-      <publishTime>04/04/2018 21:44:09</publishTime>
+      <publishTime>04/06/2018 00:20:39</publishTime>
     </File>
     <File Include="bin/OneX.Core.pdb">
-      <publishTime>04/04/2018 21:44:09</publishTime>
+      <publishTime>04/06/2018 00:20:39</publishTime>
     </File>
     <File Include="bin/pl/FSharp.Core.resources.dll">
       <publishTime>01/25/2018 13:45:30</publishTime>
@@ -88,10 +88,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>01/25/2018 13:45:30</publishTime>
     </File>
     <File Include="bin/WebApp.dll">
-      <publishTime>04/04/2018 21:44:10</publishTime>
+      <publishTime>04/06/2018 00:20:43</publishTime>
     </File>
     <File Include="bin/WebApp.pdb">
-      <publishTime>04/04/2018 21:44:10</publishTime>
+      <publishTime>04/06/2018 00:20:43</publishTime>
     </File>
     <File Include="bin/zh-Hans/FSharp.Core.resources.dll">
       <publishTime>01/25/2018 13:45:30</publishTime>
@@ -100,31 +100,31 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>01/25/2018 13:45:30</publishTime>
     </File>
     <File Include="Default.aspx">
-      <publishTime>04/04/2018 14:28:27</publishTime>
+      <publishTime>04/05/2018 20:49:32</publishTime>
     </File>
     <File Include="FillOnex.aspx">
-      <publishTime>04/04/2018 21:20:45</publishTime>
+      <publishTime>04/05/2018 20:49:32</publishTime>
     </File>
     <File Include="Global.asax">
-      <publishTime>04/04/2018 14:28:27</publishTime>
+      <publishTime>04/05/2018 20:49:32</publishTime>
     </File>
     <File Include="Scripts/jquery-1.4.1-vsdoc.js">
-      <publishTime>04/04/2018 14:28:27</publishTime>
+      <publishTime>04/05/2018 20:49:32</publishTime>
     </File>
     <File Include="Scripts/jquery-1.4.1.js">
-      <publishTime>04/04/2018 14:28:27</publishTime>
+      <publishTime>04/05/2018 20:49:32</publishTime>
     </File>
     <File Include="Scripts/jquery-1.4.1.min.js">
-      <publishTime>04/04/2018 14:28:27</publishTime>
+      <publishTime>04/05/2018 20:49:32</publishTime>
     </File>
     <File Include="Site.Master">
-      <publishTime>04/04/2018 14:28:27</publishTime>
+      <publishTime>04/05/2018 20:49:32</publishTime>
     </File>
     <File Include="Styles/Site.css">
-      <publishTime>04/04/2018 14:28:27</publishTime>
+      <publishTime>04/05/2018 20:49:32</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>04/04/2018 17:38:14</publishTime>
+      <publishTime>04/05/2018 22:52:04</publishTime>
     </File>
   </ItemGroup>
 </Project>

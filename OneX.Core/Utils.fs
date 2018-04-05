@@ -7,6 +7,7 @@ let inline defArgr d v = match v with | Success s -> s | _ -> d
 let inline (|>>) x f = x |> Option.map f
 let inline (|?) def arg = defaultArg arg def
 let inline map f d = function | Some v -> f v | None -> d
+let inline mapl f = function | [] -> [] | l -> f l 
 let inline defArg d v = defaultArg v d
 let inline cond v t f = if v then t else f
 let inline showTime title func =

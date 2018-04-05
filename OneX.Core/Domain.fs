@@ -125,7 +125,7 @@ let toGameType _type =
 let getBets (bet:JsonValue) =
     bet.AsArray()
     |> Array.choose (fun b ->
-        let c = b?C.AsFloat()
+        let c = b?C |> asF
         let _type = b?T.AsInteger()
         let param = b.TryGetProperty("P") |>> asF
         match toBetType param _type with

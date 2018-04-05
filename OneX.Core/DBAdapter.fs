@@ -40,7 +40,7 @@ let executeReader command func =
     execute command (fun cmd -> func(cmd.ExecuteReader()))
 
 let executeNonQueryMulti commands func =
-    executeMulti commands (fun cmd -> func(cmd.ExecuteNonQuery()))
+    commands |> mapl (fun cmds -> executeMulti cmds (fun cmd -> func(cmd.ExecuteNonQuery())))
 
 type DBTeam = int * string
 type DBMatch = int * int * int * int * string
@@ -77,10 +77,27 @@ let teamIDsSelectCommand =
     "SELECT ID FROM Teams"
 let matchesIDsSelectCommand =
     "SELECT ID FROM Matches"
+let betsInfoSelectCommand =
+    """WITH Grouped AS (SELECT MatchID, BetTypeID, BetParam, MAX(ReceivedAt) AS ReceivedAt FROM Bets GROUP BY MatchID, BetTypeID, BetParam)
+    SELECT b.MatchID, b.BetTypeID, b.BetParam, b.Value FROM Grouped g INNER JOIN Bets b
+    ON g.MatchID = b.MatchID AND g.BetTypeID = b.BetTypeID AND ISNULL(g.BetParam, 0) = ISNULL(b.BetParam, 0) AND g.ReceivedAt = b.ReceivedAt"""
 
 let getDBIntValues command =
     executeReader command (fun reader -> seq { while reader.Read() do yield reader.GetInt32(0) } |> Seq.toList)
-
+let getDBBetValues command =
+    executeReader command (fun reader ->
+        seq {
+            while reader.Read() do
+                let mid = reader.GetInt32(0)
+                let bid = reader.GetInt32(1)
+                let bp =
+                    if reader.IsDBNull(2) then None
+                    else Some(reader.GetDouble(2))
+                let bv = reader.GetDouble(3)
+                yield (mid, bid, bp, bv)
+        }
+        |> Seq.toList
+    )
 
 let insertValues insertCommand set =
     let commands =
@@ -90,24 +107,23 @@ let insertValues insertCommand set =
         |> List.choose insertCommand
     executeNonQueryMulti commands id
 
-let insertNewValues selectCommand insertCommand (values:'T list) contains =
+let insertNewValues insertCommand (existValues:'T1 list) (values:'T2 list) contains =
     let set = HashSet(values)
-    let existingSet =
-        selectCommand
-        |> getDBIntValues
-        |> defArgr []
-        |> HashSet
+    let existingSet = HashSet(existValues)
     set.RemoveWhere (fun value -> contains existingSet value) |> ignore
     insertValues insertCommand set
 
 let insertNewTeams (teams:DBTeam list) =
-    insertNewValues teamIDsSelectCommand toTeamsInsertCommand teams (fun existingSet (id, _) -> existingSet.Contains id)
+    let existTeams = teamIDsSelectCommand |> getDBIntValues |> defArgr []
+    insertNewValues toTeamsInsertCommand existTeams teams (fun existingSet (id, _) -> existingSet.Contains id)
 
 let insertNewMatches (matches:DBMatch list) =
-    insertNewValues matchesIDsSelectCommand toMatchesInsertCommand matches (fun existingSet (id, _, _, _, _) -> existingSet.Contains id)
+    let existMatches = matchesIDsSelectCommand |> getDBIntValues |> defArgr []
+    insertNewValues toMatchesInsertCommand existMatches matches (fun existingSet (id, _, _, _, _) -> existingSet.Contains id)
 
 let insertNewBets (bets:DBBet list) =
-    insertValues toBetsInsertCommand bets
+    let existBets = betsInfoSelectCommand |> getDBBetValues |> defArgr []
+    insertNewValues toBetsInsertCommand existBets bets (fun existingSet (mid, bid, bp, bv, _) -> existingSet.Contains (mid, bid, bp, bv))
 
 let toDBBet = function
     | P1 -> Some (1, None)
