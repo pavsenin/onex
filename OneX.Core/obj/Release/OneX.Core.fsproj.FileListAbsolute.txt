@@ -54,3 +54,4 @@ D:\git\pavsenin\OneX\OneX.Core\bin\Release\tr\FSharp.Core.resources.dll
 D:\git\pavsenin\OneX\OneX.Core\bin\Release\zh-Hans\FSharp.Core.resources.dll
 D:\git\pavsenin\OneX\OneX.Core\bin\Release\zh-Hant\FSharp.Core.resources.dll
 C:\git\pavsenin\onex\OneX.Core\obj\Release\OneX.Core.fsproj.CoreCompileInputs.cache
+D:\git\pavsenin\OneX\OneX.Core\obj\Release\OneX.Core.fsprojResolveAssemblyReference.cache

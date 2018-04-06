@@ -80,7 +80,9 @@ let matchesIDsSelectCommand =
 let betsInfoSelectCommand =
     """WITH Grouped AS (SELECT MatchID, BetTypeID, BetParam, MAX(ReceivedAt) AS ReceivedAt FROM Bets GROUP BY MatchID, BetTypeID, BetParam)
     SELECT b.MatchID, b.BetTypeID, b.BetParam, b.Value FROM Grouped g INNER JOIN Bets b
-    ON g.MatchID = b.MatchID AND g.BetTypeID = b.BetTypeID AND ISNULL(g.BetParam, 0) = ISNULL(b.BetParam, 0) AND g.ReceivedAt = b.ReceivedAt"""
+    ON g.MatchID = b.MatchID AND g.BetTypeID = b.BetTypeID AND ISNULL(g.BetParam, 0) = ISNULL(b.BetParam, 0) AND g.ReceivedAt = b.ReceivedAt
+    INNER JOIN Matches m ON b.MatchID = m.ID
+    WHERE m.StartedAt > GETDATE()"""
 
 let getDBIntValues command =
     executeReader command (fun reader -> seq { while reader.Read() do yield reader.GetInt32(0) } |> Seq.toList)
