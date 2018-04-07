@@ -1,16 +1,18 @@
 ﻿open System
 
 open FSharp.Configuration
+open System.IO
+open Newtonsoft.Json
+
 type Settings = AppSettings<"App.config">
 let connectionString = Settings.ConnectionStrings.Onex
 
 [<EntryPoint>]
 let main argv =
-    API.receiveAndInsertBets connectionString (DateTime.Now)
-
+    //API.receiveAndInsertBets connectionString (DateTime.Now)
+    let x = API.receiveAndInsertResults connectionString "\"2018-04-06\""
+    
     (*
-    let results = getResults "\"2018-03-17\""
-
     let leagueVMs =
         leagues |> List.map (fun(id, name, matches) -> toLeagueViewModel id name matches)
 
