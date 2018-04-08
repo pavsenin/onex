@@ -68,6 +68,13 @@ let private receiveScores date =
     |> Array.concat
     |> Array.toList
 
+let receiveAndInsertResults connectionString date =
+    let scores = receiveScores date
+
+    connectionStrings.["Onex"] <- connectionString
+
+    scores |> insertNewScores
+
 let receiveAndInsertBets connectionString time =
     let (teams, matches, bets) = receiveBets time
 
@@ -76,10 +83,3 @@ let receiveAndInsertBets connectionString time =
     teams |> filterTeams |> insertNewTeams |> ignore
     matches |> insertNewMatches |> ignore
     bets |> insertNewBets |> ignore
-
-let receiveAndInsertResults connectionString date =
-    let scores = receiveScores date
-
-    connectionStrings.["Onex"] <- connectionString
-
-    scores |> insertNewScores

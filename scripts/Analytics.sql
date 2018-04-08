@@ -5,7 +5,7 @@ SELECT l.Name, t1.Name, t1.ID, t2.Name, t2.ID, m.StartedAt FROM Matches m
 INNER JOIN Leagues l ON m.LeagueID = l.ID
 INNER JOIN Teams t1 ON m.Team1ID = t1.ID
 INNER JOIN Teams t2 ON m.Team2ID = t2.ID
-WHERE m.ID = 23035187
+WHERE m.ID = 23829589
 
 SELECT * FROM MATCHES WHERE StartedAt < GETDATE()
 
