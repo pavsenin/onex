@@ -54,9 +54,13 @@ CREATE TABLE Bets
   ReceivedAt DATETIME NOT NULL
 )
 GO
--- INSERT INTO Teams
--- INSERT INTO Matches
--- INSERT INTO Bets
--- INSERT INTO Teams (ID, Name) VALUES (1, 'Team1'), (2, 'Team2')
--- INSERT INTO Matches (ID, LeagueID, Team1ID, Team2ID, StartedAt) VALUES (1, 2, 3, 4, '2018-03-31 11:30:00.000'), (2, 2, 3, 4, '2018-03-31 11:30:00.000') 
--- INSERT INTO Bets (MatchID, BetTypeID, BetParam, Value, ReceivedAt) VALUES (1, 2, 3.0, 4.0, '2018-03-31 11:30:00.000'), (1, 2, 3.0, 4.0, '2018-03-31 11:30:00.000')
+DROP TABLE IF EXISTS Scores
+GO
+CREATE TABLE Scores
+(
+  MatchID INT NOT NULL PRIMARY KEY,
+  ScoreTypeID INT NOT NULL,
+  ScoreTeam1 INT NOT NULL,
+  ScoreTeam2 INT NOT NULL
+)
+GO

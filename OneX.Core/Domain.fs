@@ -27,6 +27,7 @@ type GameType =
     | Total | IndTotal1 | IndTotal2
 
 let dateTimeFormat = "yyyy-MM-dd HH:mm:ss.fff"
+let dateFormat = "yyyy-MM-dd"
 let floatFormat = NumberFormatInfo(NumberDecimalSeparator=".")
 
 let chl, eul, rfpl, apl, bundes, primera, serieA, fl1 =
@@ -187,8 +188,9 @@ let getResults date =
         dataStream.Write(byteArray, 0, byteArray.Length)
     fetchContent adjustRequest url
 
-let filterTeams teams =
-    teams |> List.filter (fun (id, _) ->
-      id <> 37429 && // Home (Goals)
-      id <> 37431    // Away (Goals)
-    )
+let isCorrectTeam (name:string) =
+    (name.StartsWith("Home (") && name.EndsWith(")")) ||
+    (name.StartsWith("Away (") && name.EndsWith(")"))
+    |> not
+
+let filterTeams teams = teams |> List.filter (fun (_, (name:string)) -> isCorrectTeam name)

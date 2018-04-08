@@ -5,6 +5,7 @@ open Utils
 open Domain
 open System.Collections.Generic
 open System
+open System.Linq
 
 let connectionStrings = Dictionary()
 
@@ -57,6 +58,9 @@ let toBetInsertValue (matchID, betID, param, value, received) =
     let paramString = param |>> (fun (p:float) -> p.ToString(floatFormat)) |> defArg "NULL"
     sprintf "(%d, %d, %s, %f, '%s')" matchID betID paramString value received
 
+let toScoreInsertValue (mid, stype, st1, st2) =
+    sprintf "(%d, %d, %d, %d)" mid stype st1 st2
+
 let toInsertCommand vs map start =
     let values = vs |> Seq.map map
     if Seq.isEmpty values then None
@@ -73,6 +77,9 @@ let toMatchesInsertCommand matches =
 let toBetsInsertCommand bets =
     toInsertCommand bets toBetInsertValue "INSERT INTO Bets (MatchID, BetTypeID, BetParam, Value, ReceivedAt) VALUES "
 
+let toScoresInsertCommand scores =
+    toInsertCommand scores toScoreInsertValue "INSERT INTO Scores (MatchID, ScoreTypeID, ScoreTeam1, ScoreTeam2) VALUES "
+
 let teamIDsSelectCommand =
     "SELECT ID FROM Teams"
 let matchesIDsSelectCommand =
@@ -83,6 +90,10 @@ let betsInfoSelectCommand =
     ON g.MatchID = b.MatchID AND g.BetTypeID = b.BetTypeID AND ISNULL(g.BetParam, 0) = ISNULL(b.BetParam, 0) AND g.ReceivedAt = b.ReceivedAt
     INNER JOIN Matches m ON b.MatchID = m.ID
     WHERE m.StartedAt > GETDATE()"""
+let matchesInfoSelectCommand =
+    "SELECT ID, LeagueID, Team1ID, Team2ID, StartedAt FROM Matches"
+let matchIDsFromScoresSelectCommand =
+    "SELECT MatchID FROM Scores"
 
 let getDBIntValues command =
     executeReader command (fun reader -> seq { while reader.Read() do yield reader.GetInt32(0) } |> Seq.toList)
@@ -97,6 +108,19 @@ let getDBBetValues command =
                     else Some(reader.GetDouble(2))
                 let bv = reader.GetDouble(3)
                 yield (mid, bid, bp, bv)
+        }
+        |> Seq.toList
+    )
+let getDBMatchValues command =
+    executeReader command (fun reader ->
+        seq {
+            while reader.Read() do
+                let id = reader.GetInt32(0)
+                let lid = reader.GetInt32(1)
+                let t1id = reader.GetInt32(2)
+                let t2id = reader.GetInt32(3)
+                let started = reader.GetDateTime(4)
+                yield (id, lid, t1id, t2id, started)
         }
         |> Seq.toList
     )
@@ -125,7 +149,21 @@ let insertNewMatches (matches:DBMatch list) =
 
 let insertNewBets (bets:DBBet list) =
     let existBets = betsInfoSelectCommand |> getDBBetValues |> defArgr []
-    insertNewValues toBetsInsertCommand existBets bets (fun existingSet (mid, bid, bp, bv, _) -> existingSet.Contains (mid, bid, bp, bv))
+    insertNewValues toBetsInsertCommand existBets bets (fun existingSet (mid, bid, bp, bv, _) -> existingSet.Contains((mid, bid, bp, bv)))
+
+let insertNewScores scores =
+    let existScores = matchIDsFromScoresSelectCommand |> getDBIntValues |> defArgr []
+    let matches = matchesInfoSelectCommand |> getDBMatchValues |> defArgr []
+    let keySelector = Func<_, _>(fun (_, lid, t1id, t2id, (started:DateTime)) -> (lid, t1id, t2id, started.ToString(dateFormat)))
+    let elemSelector = Func<_, _>(fun (id, _, _, _, _) -> id)
+    let matchesDict = matches.ToDictionary(keySelector, elemSelector)
+    let dbScores = scores |> List.choose (fun (lid, t1id, t2id, time, ((s1, s2), _)) ->
+        let date = DateTime.Parse(time).ToString(dateFormat)
+        match matchesDict.TryGetValue((lid, t1id, t2id, date)) with
+        | false, _ -> None
+        | true, mid -> Some(mid, 1, s1, s2)
+    )
+    insertNewValues toScoresInsertCommand existScores dbScores (fun existingSet (mid, _, _, _) -> existingSet.Contains mid)
 
 let toDBBet = function
     | P1 -> Some (1, None)
