@@ -48,8 +48,9 @@ type DBMatch = int * int * int * int * string
 type DBBet = int * int * float option * float * string
 type LeagueResponse = DBTeam list * DBMatch list * DBBet list
 
-let toTeamInsertValue (id, name) =
-    sprintf "(%d, '%s')" id name
+let toTeamInsertValue (id, (name:string)) =
+    let validName = name.Replace("'", "''")
+    sprintf "(%d, '%s')" id validName
 
 let toMatchInsertValue (id, leagueID, team1ID, team2ID, time) =
     sprintf "(%d, %d, %d, %d, '%s')" id leagueID team1ID team2ID time
@@ -201,63 +202,3 @@ let toLeagueResponse leagueID now matches response =
             let dbMatch = (id, leagueID, team1ID, team2ID, time.ToString())
             toDBMatch id now games (team1::team2::teams, dbMatch::matches, bets)
         ) response
-
-
-(*
-1536237-FIFA-World-Cup-2018
-108319-England-FA-Cup
-119235-Germany-DFB-Pokal
-119243-Spain-Copa-del-Rey
-127759-Coppa-Italia
-119241-Coupe-de-France
-176125-Russian-Cup
-
-105759-England-Championship
-13709-England-League-One
-24637-England-League-Two
-26031-Austria-Bundesliga
-28787-Belgium-Jupiler-League
-30037-Bulgaria-A-PFG
-109313-Germany-2-Bundesliga
-8777-Greece-SuperLeague
-8773-Denmark-Superliga
-27687-Spain-Segunda-Division
-7067-Italy-Serie-B
-27731-Poland-Ekstraklasa
-118663-Portugal-Portuguese-Liga
-118585-Russian-Championship-FNL
-11121-Romania-Liga-1
-30035-Serbia-SuperLiga
-11113-Turkey-SuperLiga
-29949-Ukraine-Premier-League
-12829-France-Ligue-2
-27707-Czech-Republic-Gambrinus-Liga
-27735-Croatia-1-HNL
-27695-Switzerland-SuperLeague
-13521-Scotland-Premier-League
-212425-Sweden-Allsvenskan
-
-Голландия
-Кипр
-Израиль
-Беларусь
-Казахстан
-
-
-
-119599-Argentina-Primera-Division
-1268397-Brazil-Campeonato-Brasileiro
-120507-Mexico-Primera-Division
-214147-Colombia-Categora-Primera-A
-55479-Paraguay-Primera-Division
-120503-Peru-Primera-Division
-828065-USA-MLS
-52183-Uruguay-Primera-Division
-
-
-104509-Australia-A-League
-32887-Iran-Pro-League
-58043-China-Super-League
-30467-South-Korea-K-League-Classic
-118737-Japan-J-League
-*)

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <!--
 This file is used by the publish/package process of your Web project. You can customize the behavior of this process
 by editing this MSBuild file. In order to learn more about this please visit https://go.microsoft.com/fwlink/?LinkID=208121. 
@@ -28,22 +28,22 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>04/05/2018 22:43:52</publishTime>
     </File>
     <File Include="bin/cs/FSharp.Core.resources.dll">
-      <publishTime>04/06/2018 22:08:11</publishTime>
+      <publishTime>04/07/2018 17:08:58</publishTime>
     </File>
     <File Include="bin/de/FSharp.Core.resources.dll">
-      <publishTime>04/06/2018 22:08:11</publishTime>
+      <publishTime>04/07/2018 17:08:58</publishTime>
     </File>
     <File Include="bin/en/FSharp.Core.resources.dll">
-      <publishTime>04/06/2018 22:08:11</publishTime>
+      <publishTime>04/07/2018 17:08:58</publishTime>
     </File>
     <File Include="bin/es/FSharp.Core.resources.dll">
-      <publishTime>04/06/2018 22:08:11</publishTime>
+      <publishTime>04/07/2018 17:08:58</publishTime>
     </File>
     <File Include="bin/fr/FSharp.Core.resources.dll">
-      <publishTime>04/06/2018 22:08:11</publishTime>
+      <publishTime>04/07/2018 17:08:58</publishTime>
     </File>
     <File Include="bin/FSharp.Core.dll">
-      <publishTime>04/06/2018 22:08:11</publishTime>
+      <publishTime>04/07/2018 17:08:58</publishTime>
     </File>
     <File Include="bin/FSharp.Data.dll">
       <publishTime>03/25/2018 18:36:03</publishTime>
@@ -52,13 +52,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>03/25/2018 18:36:03</publishTime>
     </File>
     <File Include="bin/it/FSharp.Core.resources.dll">
-      <publishTime>04/06/2018 22:08:11</publishTime>
+      <publishTime>04/07/2018 17:08:58</publishTime>
     </File>
     <File Include="bin/ja/FSharp.Core.resources.dll">
-      <publishTime>04/06/2018 22:08:11</publishTime>
+      <publishTime>04/07/2018 17:08:58</publishTime>
     </File>
     <File Include="bin/ko/FSharp.Core.resources.dll">
-      <publishTime>04/06/2018 22:08:11</publishTime>
+      <publishTime>04/07/2018 17:08:58</publishTime>
     </File>
     <File Include="bin/Newtonsoft.Json.dll">
       <publishTime>03/25/2018 18:36:03</publishTime>
@@ -70,34 +70,34 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>03/25/2018 18:36:03</publishTime>
     </File>
     <File Include="bin/OneX.Core.dll">
-      <publishTime>04/06/2018 22:17:21</publishTime>
+      <publishTime>04/11/2018 22:30:40</publishTime>
     </File>
     <File Include="bin/OneX.Core.pdb">
       <publishTime>04/06/2018 22:17:21</publishTime>
     </File>
     <File Include="bin/pl/FSharp.Core.resources.dll">
-      <publishTime>04/06/2018 22:08:11</publishTime>
+      <publishTime>04/07/2018 17:08:58</publishTime>
     </File>
     <File Include="bin/pt-BR/FSharp.Core.resources.dll">
-      <publishTime>04/06/2018 22:08:11</publishTime>
+      <publishTime>04/07/2018 17:08:58</publishTime>
     </File>
     <File Include="bin/ru/FSharp.Core.resources.dll">
-      <publishTime>04/06/2018 22:08:11</publishTime>
+      <publishTime>04/07/2018 17:08:58</publishTime>
     </File>
     <File Include="bin/tr/FSharp.Core.resources.dll">
-      <publishTime>04/06/2018 22:08:11</publishTime>
+      <publishTime>04/07/2018 17:08:58</publishTime>
     </File>
     <File Include="bin/WebApp.dll">
-      <publishTime>04/06/2018 22:17:22</publishTime>
+      <publishTime>04/11/2018 22:30:41</publishTime>
     </File>
     <File Include="bin/WebApp.pdb">
       <publishTime>04/06/2018 22:17:22</publishTime>
     </File>
     <File Include="bin/zh-Hans/FSharp.Core.resources.dll">
-      <publishTime>04/06/2018 22:08:11</publishTime>
+      <publishTime>04/07/2018 17:08:58</publishTime>
     </File>
     <File Include="bin/zh-Hant/FSharp.Core.resources.dll">
-      <publishTime>04/06/2018 22:08:11</publishTime>
+      <publishTime>04/07/2018 17:08:58</publishTime>
     </File>
     <File Include="Default.aspx">
       <publishTime>04/05/2018 20:49:32</publishTime>
@@ -124,7 +124,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>04/05/2018 20:49:32</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>04/06/2018 22:17:22</publishTime>
+      <publishTime>04/10/2018 23:14:22</publishTime>
     </File>
   </ItemGroup>
 </Project>

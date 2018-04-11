@@ -49,7 +49,6 @@ C:\git\pavsenin\onex\WebApp\bin\Newtonsoft.Json.xml
 C:\git\pavsenin\onex\WebApp\bin\Newtonsoft.Json.FSharp.xml
 C:\git\pavsenin\onex\WebApp\bin\NodaTime.xml
 C:\git\pavsenin\onex\WebApp\obj\Release\WebApp.csprojResolveAssemblyReference.cache
-C:\git\pavsenin\onex\WebApp\obj\Release\WebApp.csproj.CoreCompileInputs.cache
 C:\git\pavsenin\onex\WebApp\obj\Release\WebApp.dll
 C:\git\pavsenin\onex\WebApp\obj\Release\WebApp.pdb
 C:\git\pavsenin\onex\WebApp\bin\FSharp.Core.dll

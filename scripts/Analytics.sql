@@ -5,10 +5,12 @@ SELECT l.Name, t1.Name, t1.ID, t2.Name, t2.ID, m.StartedAt FROM Matches m
 INNER JOIN Leagues l ON m.LeagueID = l.ID
 INNER JOIN Teams t1 ON m.Team1ID = t1.ID
 INNER JOIN Teams t2 ON m.Team2ID = t2.ID
-WHERE m.ID = 23829589
+WHERE l.ID = 176125
+
+select * from Leagues
 
 SELECT * FROM MATCHES WHERE StartedAt < GETDATE()
-
+SELECT * FROM Teams
 
 WITH Grouped AS (SELECT MatchID, BetTypeID, BetParam, MAX(ReceivedAt) AS ReceivedAt FROM Bets GROUP BY MatchID, BetTypeID, BetParam)
 SELECT b.MatchID, b.BetTypeID, b.BetParam, b.Value FROM Grouped g
@@ -20,7 +22,7 @@ WITH Grouped AS (SELECT MatchID, BetTypeID, BetParam, MIN(Value) AS Min, MAX(Val
 SELECT b.MatchID, b.BetTypeID, b.BetParam, b.Value FROM Grouped g
 INNER JOIN Bets b ON g.MatchID = b.MatchID AND g.BetTypeID = b.BetTypeID AND ISNULL(g.BetParam, 0) = ISNULL(b.BetParam, 0)
 INNER JOIN Matches m ON b.MatchID = m.ID
-WHERE b.MatchID = 23034897 AND b.BetTypeID = 14 AND b.BetPAram = 2
+WHERE b.MatchID = 24081997 AND b.BetTypeID = 14
 
 WITH GroupedValues AS (SELECT MatchID, BetTypeID, BetParam, MIN(Value) AS Min, MAX(Value) AS Max FROM Bets GROUP BY MatchID, BetTypeID, BetParam),
 GroupedTimes AS (SELECT MatchID, BetTypeID, BetParam, MIN(ReceivedAt) AS FirstTime, MAX(ReceivedAt) AS LastTime FROM Bets GROUP BY MatchID, BetTypeID, BetParam),
@@ -37,9 +39,9 @@ INNER JOIN Leagues l ON m.LeagueID = l.ID
 INNER JOIN Teams t1 ON m.Team1ID = t1.ID
 INNER JOIN Teams t2 ON m.Team2ID = t2.ID
 INNER JOIN BetTypes bt ON bt.ID = gt.BetTypeID
+where l.ID = 176125
 )
 SELECT *, (Last - First) * 100.0 / Last AS LDiff FROM GroupedAll
-WHERE StartedAt > GETDATE() AND Last <= 3 AND BetTypeID <= 10 AND convert(varchar(23), StartedAt, 121) < '2018-04-09'
 ORDER BY LDiff, Diff
 
 SELECT ID FROM Matches
@@ -53,3 +55,5 @@ INNER JOIN Teams t2 ON m.Team2ID = t2.ID
 INNER JOIN Scores s ON s.MatchID = m.ID
 
 --delete from scores
+
+

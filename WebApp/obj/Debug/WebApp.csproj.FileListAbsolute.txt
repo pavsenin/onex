@@ -34,7 +34,6 @@ D:\git\pavsenin\OneX\WebApp\obj\Debug\WebApp.csproj.CoreCompileInputs.cache
 D:\git\pavsenin\OneX\WebApp\obj\Debug\WebApp.dll
 D:\git\pavsenin\OneX\WebApp\obj\Debug\WebApp.pdb
 C:\git\pavsenin\onex\WebApp\obj\Debug\WebApp.csprojResolveAssemblyReference.cache
-C:\git\pavsenin\onex\WebApp\obj\Debug\WebApp.csproj.CoreCompileInputs.cache
 C:\git\pavsenin\onex\WebApp\obj\Debug\WebApp.dll
 C:\git\pavsenin\onex\WebApp\obj\Debug\WebApp.pdb
 C:\git\pavsenin\onex\WebApp\bin\WebApp.dll.config

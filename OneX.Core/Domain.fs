@@ -30,11 +30,34 @@ let dateTimeFormat = "yyyy-MM-dd HH:mm:ss.fff"
 let dateFormat = "yyyy-MM-dd"
 let floatFormat = NumberFormatInfo(NumberDecimalSeparator=".")
 
-let chl, eul, rfpl, apl, bundes, primera, serieA, fl1 =
-    "UEFA-Champions-League", "UEFA-Europa-League", "Russia-Premier-League", "England-Premier-League",
-    "Germany-Bundesliga", "Spain-Primera-Divisin", "Italy-Serie-A", "France-Ligue-1"
 let champs =
-    [rfpl, 225733; apl, 88637; bundes, 96463; primera, 127733; serieA, 110163; fl1, 12821; chl, 118587; eul, 118593]
+    [
+    // Europe
+    ("UEFA-Champions-League", 118587); ("UEFA-Europa-League", 118593); ("Russia-Premier-League", 225733);
+    ("England-Premier-League", 88637); ("Germany-Bundesliga", 96463); ("Spain-Primera-Divisin", 127733);
+    ("Italy-Serie-A", 110163); ("France-Ligue-1", 12821); ("FIFA-World-Cup-2018", 1536237);
+    ("England-FA-Cup", 108319); ("Germany-DFB-Pokal", 119235); ("Spain-Copa-del-Rey", 119243);
+    ("Coppa-Italia", 127759); ("Coupe-de-France", 119241); ("Russian-Cup", 176125);
+    ("England-Championship", 105759); ("England-League-One", 13709); ("England-League-Two", 24637);
+    ("Austria-Bundesliga", 26031); ("Belgium-Jupiler-League", 28787); ("Bulgaria-A-PFG", 30037);
+    ("Germany-2-Bundesliga", 109313); ("Greece-SuperLeague", 8777); ("Denmark-Superliga", 8773);
+    ("Spain-Segunda-Division", 27687); ("Italy-Serie-B", 7067); ("Poland-Ekstraklasa", 27731);
+    ("Portugal-Portuguese-Liga", 118663); ("Russian-Championship-FNL", 118585); ("Romania-Liga-1", 11121);
+    ("Serbia-SuperLiga", 30035); ("Turkey-SuperLiga", 11113); ("Ukraine-Premier-League", 29949);
+    ("France-Ligue-2", 12829); ("Czech-Republic-Gambrinus-Liga", 27707); ("Croatia-1-HNL", 27735);
+    ("Switzerland-SuperLeague", 27695); ("Scotland-Premier-League", 13521); ("Sweden-Allsvenskan", 212425);
+    ("Netherlands-Eredivisie", 119575); ("Cyprus-First-Division", 12505); ("Israel-Ligat-haAl", 41199);
+    ("Kazakhstan-Premier-League", 33021); ("Belarus-Premier-League", 1015483);
+    
+    // America
+    ("Argentina-Primera-Division", 119599); ("Brazil-Campeonato-Brasileiro", 1268397); ("Mexico-Primera-Division", 120507);
+    ("Colombia-Categora-Primera-A", 214147); ("Paraguay-Primera-Division", 55479); ("Peru-Primera-Division", 120503);
+    ("USA-MLS", 828065); ("Uruguay-Primera-Division", 52183);
+    
+    // Asia
+    ("Australia-A-League", 104509); ("Iran-Pro-League", 32887); ("China-Super-League", 58043);
+    ("South-Korea-K-League-Classic", 30467); ("Japan-J-League", 118737);
+    ]
 
 let buildLigaUrl id =
     """https://1xstavka.ru/LineFeed/Get1x2_Zip?champs=""" +
