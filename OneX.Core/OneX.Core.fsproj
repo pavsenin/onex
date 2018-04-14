@@ -21,7 +21,7 @@
     <Optimize>false</Optimize>
     <Tailcalls>false</Tailcalls>
     <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DefineConstants>TRACE;DEBUG</DefineConstants>
     <WarningLevel>3</WarningLevel>
     <DocumentationFile>bin\Debug\OneX.Core.XML</DocumentationFile>
   </PropertyGroup>
@@ -54,8 +54,12 @@
     <Compile Include="AssemblyInfo.fs" />
     <Compile Include="Utils.fs" />
     <Compile Include="Domain.fs" />
+    <Compile Include="Onex.fs" />
     <Compile Include="DBAdapter.fs" />
     <Compile Include="API.fs" />
+    <Compile Include="Tests\UtilsTests.fs" />
+    <Compile Include="Tests\OnexTests.fs" />
+    <Compile Include="Tests\APITests.fs" />
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
@@ -84,6 +88,9 @@
     <Reference Include="NodaTime">
       <HintPath>..\packages\NodaTime.2.3.0-beta02\lib\net45\NodaTime.dll</HintPath>
       <Private>True</Private>
+    </Reference>
+    <Reference Include="nunit.framework">
+      <HintPath>..\packages\NUnit.3.8.1\lib\net45\nunit.framework.dll</HintPath>
     </Reference>
     <Reference Include="SharpYaml">
       <HintPath>..\packages\FSharp.Configuration.1.4.0\lib\net45\SharpYaml.dll</HintPath>

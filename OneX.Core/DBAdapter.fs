@@ -1,7 +1,7 @@
 ﻿module DBAdapter
 
 open System.Data.SqlClient
-open Utils
+open OneX.Core.Utils
 open Domain
 open System.Collections.Generic
 open System

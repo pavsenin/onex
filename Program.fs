@@ -3,6 +3,7 @@
 open FSharp.Configuration
 open System.IO
 open Newtonsoft.Json
+open OneX.Core
 
 type Settings = AppSettings<"App.config">
 let connectionString = Settings.ConnectionStrings.Onex
