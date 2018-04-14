@@ -7,7 +7,6 @@ C:\git\pavsenin\onex\OneX.Core\bin\Debug\FSharp.Data.dll
 C:\git\pavsenin\onex\OneX.Core\bin\Debug\Newtonsoft.Json.dll
 C:\git\pavsenin\onex\OneX.Core\bin\Debug\Newtonsoft.Json.FSharp.dll
 C:\git\pavsenin\onex\OneX.Core\bin\Debug\NodaTime.dll
-C:\git\pavsenin\onex\OneX.Core\bin\Debug\nunit.framework.dll
 C:\git\pavsenin\onex\OneX.Core\bin\Debug\SharpYaml.dll
 C:\git\pavsenin\onex\OneX.Core\bin\Debug\FSharp.Configuration.xml
 C:\git\pavsenin\onex\OneX.Core\bin\Debug\FSharp.Core.xml
@@ -17,7 +16,6 @@ C:\git\pavsenin\onex\OneX.Core\bin\Debug\Newtonsoft.Json.xml
 C:\git\pavsenin\onex\OneX.Core\bin\Debug\Newtonsoft.Json.FSharp.xml
 C:\git\pavsenin\onex\OneX.Core\bin\Debug\NodaTime.pdb
 C:\git\pavsenin\onex\OneX.Core\bin\Debug\NodaTime.xml
-C:\git\pavsenin\onex\OneX.Core\bin\Debug\nunit.framework.xml
 C:\git\pavsenin\onex\OneX.Core\bin\Debug\SharpYaml.xml
 C:\git\pavsenin\onex\OneX.Core\bin\Debug\cs\FSharp.Core.resources.dll
 C:\git\pavsenin\onex\OneX.Core\bin\Debug\de\FSharp.Core.resources.dll
@@ -36,3 +34,13 @@ C:\git\pavsenin\onex\OneX.Core\bin\Debug\zh-Hant\FSharp.Core.resources.dll
 C:\git\pavsenin\onex\OneX.Core\obj\Debug\OneX.Core.fsproj.CoreCompileInputs.cache
 C:\git\pavsenin\onex\OneX.Core\obj\Debug\OneX.Core.dll
 C:\git\pavsenin\onex\OneX.Core\obj\Debug\OneX.Core.pdb
+C:\git\pavsenin\onex\OneX.Core\bin\Debug\OneX.Core.dll.config
+C:\git\pavsenin\onex\OneX.Core\bin\Debug\xunit.abstractions.dll
+C:\git\pavsenin\onex\OneX.Core\bin\Debug\xunit.assert.dll
+C:\git\pavsenin\onex\OneX.Core\bin\Debug\xunit.core.dll
+C:\git\pavsenin\onex\OneX.Core\bin\Debug\xunit.execution.desktop.dll
+C:\git\pavsenin\onex\OneX.Core\bin\Debug\xunit.abstractions.xml
+C:\git\pavsenin\onex\OneX.Core\bin\Debug\xunit.assert.xml
+C:\git\pavsenin\onex\OneX.Core\bin\Debug\xunit.core.xml
+C:\git\pavsenin\onex\OneX.Core\bin\Debug\xunit.execution.desktop.xml
+C:\git\pavsenin\onex\OneX.Core\obj\Debug\OneX.Core.fsproj.OneX.Core.dll.config

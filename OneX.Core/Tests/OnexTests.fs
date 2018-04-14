@@ -1,23 +1,28 @@
 ﻿namespace OneX.Core.Tests
 
-open NUnit.Framework
 open System
 open OneX.Core.Onex
 open OneX.Core.WebUtils
 open FSharp.Data
 open FSharp.Data.JsonExtensions
+open Xunit
+open OneX.Core.BenchmarkUtils
 
-[<TestFixture>]
 type OnexTests() =
-    [<Test>]
+    [<Fact>]
     member this.leaguesIsAvailable() =
         leagues
-        |> List.map (fun (_, id) ->
-            id
-            |> buildLeagueUrl
-            |> fetchContentGet
-            |> JsonValue.Parse
-        )
-        |> List.iter (fun content ->
-            Assert.That(content?Success, Is.True)
+        |> List.iter (fun (_, id) ->
+            let (content, time) =
+                getExecutionTime (fun _ ->
+                    id
+                    |> buildLeagueUrl
+                    |> fetchContentGet
+                    |> JsonValue.Parse
+                )
+
+            Assert.True(content?Success.AsBoolean())
+            Assert.Equal(content?Error.AsString(), "")
+            Assert.Equal(content?ErrorCode.AsInteger(), 0)
+            Assert.True(time < 1000L)
         )

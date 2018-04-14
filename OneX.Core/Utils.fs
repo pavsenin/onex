@@ -37,10 +37,13 @@ module WebUtils =
 
 module BenchmarkUtils =
 
-    let inline showTime title func =
+    let inline getExecutionTime func =
         let watch = System.Diagnostics.Stopwatch()
         watch.Start()
         let result = func()
         watch.Stop()
-        Console.WriteLine(title + ": " + watch.ElapsedMilliseconds.ToString())
+        (result, watch.ElapsedMilliseconds)
+    let inline showExecutionTime title func =
+        let (result, time ) = getExecutionTime func
+        Console.WriteLine(title + ": " + time.ToString())
         result
