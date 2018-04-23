@@ -10,7 +10,6 @@ C:\git\pavsenin\onex\bin\Debug\NodaTime.dll
 C:\git\pavsenin\onex\bin\Debug\OneX.Core.dll
 C:\git\pavsenin\onex\bin\Debug\SharpYaml.dll
 C:\git\pavsenin\onex\bin\Debug\System.ValueTuple.dll
-C:\git\pavsenin\onex\bin\Debug\nunit.framework.dll
 C:\git\pavsenin\onex\bin\Debug\OneX.Core.pdb
 C:\git\pavsenin\onex\bin\Debug\OneX.Core.xml
 C:\git\pavsenin\onex\bin\Debug\FSharp.Configuration.xml
@@ -21,7 +20,6 @@ C:\git\pavsenin\onex\bin\Debug\Newtonsoft.Json.xml
 C:\git\pavsenin\onex\bin\Debug\Newtonsoft.Json.FSharp.xml
 C:\git\pavsenin\onex\bin\Debug\NodaTime.xml
 C:\git\pavsenin\onex\bin\Debug\SharpYaml.xml
-C:\git\pavsenin\onex\bin\Debug\nunit.framework.xml
 C:\git\pavsenin\onex\bin\Debug\cs\FSharp.Core.resources.dll
 C:\git\pavsenin\onex\bin\Debug\de\FSharp.Core.resources.dll
 C:\git\pavsenin\onex\bin\Debug\en\FSharp.Core.resources.dll
@@ -41,3 +39,10 @@ C:\git\pavsenin\onex\obj\Debug\OneX.fsproj.OneX.exe.config
 C:\git\pavsenin\onex\obj\Debug\OneX.fsproj.CoreCompileInputs.cache
 C:\git\pavsenin\onex\obj\Debug\OneX.exe
 C:\git\pavsenin\onex\obj\Debug\OneX.pdb
+C:\git\pavsenin\onex\bin\Debug\xunit.core.dll
+C:\git\pavsenin\onex\bin\Debug\xunit.assert.dll
+C:\git\pavsenin\onex\bin\Debug\xunit.abstractions.dll
+C:\git\pavsenin\onex\bin\Debug\OneX.Core.dll.config
+C:\git\pavsenin\onex\bin\Debug\xunit.core.xml
+C:\git\pavsenin\onex\bin\Debug\xunit.assert.xml
+C:\git\pavsenin\onex\bin\Debug\xunit.abstractions.xml

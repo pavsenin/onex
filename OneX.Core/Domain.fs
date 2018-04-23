@@ -9,15 +9,27 @@ type BetType =
     | D1X | D12 | DX2
     | TG of float
     | TL of float
+    | H1 of float
+    | H2 of float
+    | ATG of float
+    | ATL of float
+    | AH1 of float
+    | AH2 of float
     | IT1G of float
     | IT1L of float
     | IT2G of float
     | IT2L of float
+    | Sc of float
+    | PenY | PenN
+    | RemY | RemN
 
 type GameType =
     | UnGame
     | X12 | DX12
-    | Total | IndTotal1 | IndTotal2
+    | Total | AsiaTotal
+    | Handicap | AsiaHandicap
+    | IndTotal1 | IndTotal2
+    | Score | Penalty | Removal
 
 let dateTimeFormat = "yyyy-MM-dd HH:mm:ss.fff"
 let dateFormat = "yyyy-MM-dd"

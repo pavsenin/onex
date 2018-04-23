@@ -51,7 +51,6 @@ C:\git\pavsenin\onex\WebApp\bin\NodaTime.xml
 C:\git\pavsenin\onex\WebApp\obj\Release\WebApp.csprojResolveAssemblyReference.cache
 C:\git\pavsenin\onex\WebApp\obj\Release\WebApp.dll
 C:\git\pavsenin\onex\WebApp\obj\Release\WebApp.pdb
-C:\git\pavsenin\onex\WebApp\bin\FSharp.Core.dll
 C:\git\pavsenin\onex\WebApp\bin\FSharp.Core.xml
 C:\git\pavsenin\onex\WebApp\bin\cs\FSharp.Core.resources.dll
 C:\git\pavsenin\onex\WebApp\bin\de\FSharp.Core.resources.dll
@@ -67,3 +66,11 @@ C:\git\pavsenin\onex\WebApp\bin\ru\FSharp.Core.resources.dll
 C:\git\pavsenin\onex\WebApp\bin\tr\FSharp.Core.resources.dll
 C:\git\pavsenin\onex\WebApp\bin\zh-Hans\FSharp.Core.resources.dll
 C:\git\pavsenin\onex\WebApp\bin\zh-Hant\FSharp.Core.resources.dll
+C:\git\pavsenin\onex\WebApp\bin\xunit.core.dll
+C:\git\pavsenin\onex\WebApp\bin\xunit.assert.dll
+C:\git\pavsenin\onex\WebApp\bin\xunit.abstractions.dll
+C:\git\pavsenin\onex\WebApp\bin\OneX.Core.dll.config
+C:\git\pavsenin\onex\WebApp\bin\xunit.core.xml
+C:\git\pavsenin\onex\WebApp\bin\xunit.assert.xml
+C:\git\pavsenin\onex\WebApp\bin\xunit.abstractions.xml
+C:\git\pavsenin\onex\WebApp\obj\Release\WebApp.csproj.CoreCompileInputs.cache

@@ -44,7 +44,6 @@ C:\git\pavsenin\onex\WebApp\bin\Newtonsoft.Json.dll
 C:\git\pavsenin\onex\WebApp\bin\Newtonsoft.Json.FSharp.dll
 C:\git\pavsenin\onex\WebApp\bin\NodaTime.dll
 C:\git\pavsenin\onex\WebApp\bin\OneX.Core.dll
-C:\git\pavsenin\onex\WebApp\bin\nunit.framework.dll
 C:\git\pavsenin\onex\WebApp\bin\OneX.Core.pdb
 C:\git\pavsenin\onex\WebApp\bin\OneX.Core.xml
 C:\git\pavsenin\onex\WebApp\bin\FSharp.Core.xml
@@ -53,7 +52,6 @@ C:\git\pavsenin\onex\WebApp\bin\FSharp.Data.xml
 C:\git\pavsenin\onex\WebApp\bin\Newtonsoft.Json.xml
 C:\git\pavsenin\onex\WebApp\bin\Newtonsoft.Json.FSharp.xml
 C:\git\pavsenin\onex\WebApp\bin\NodaTime.xml
-C:\git\pavsenin\onex\WebApp\bin\nunit.framework.xml
 C:\git\pavsenin\onex\WebApp\bin\cs\FSharp.Core.resources.dll
 C:\git\pavsenin\onex\WebApp\bin\de\FSharp.Core.resources.dll
 C:\git\pavsenin\onex\WebApp\bin\en\FSharp.Core.resources.dll
@@ -70,3 +68,10 @@ C:\git\pavsenin\onex\WebApp\bin\zh-Hans\FSharp.Core.resources.dll
 C:\git\pavsenin\onex\WebApp\bin\zh-Hant\FSharp.Core.resources.dll
 C:\git\pavsenin\onex\WebApp\obj\Debug\WebApp.dll
 C:\git\pavsenin\onex\WebApp\obj\Debug\WebApp.pdb
+C:\git\pavsenin\onex\WebApp\bin\xunit.core.dll
+C:\git\pavsenin\onex\WebApp\bin\xunit.assert.dll
+C:\git\pavsenin\onex\WebApp\bin\xunit.abstractions.dll
+C:\git\pavsenin\onex\WebApp\bin\OneX.Core.dll.config
+C:\git\pavsenin\onex\WebApp\bin\xunit.core.xml
+C:\git\pavsenin\onex\WebApp\bin\xunit.assert.xml
+C:\git\pavsenin\onex\WebApp\bin\xunit.abstractions.xml

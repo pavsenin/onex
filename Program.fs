@@ -10,7 +10,7 @@ let connectionString = Settings.ConnectionStrings.Onex
 
 [<EntryPoint>]
 let main argv =
-    API.receiveAndInsertBets connectionString (DateTime.Now)
+    let (teams, matches, bets) = API.receiveBets (DateTime.Now)
     //let x = API.receiveAndInsertResults connectionString "\"2018-04-07\""
     
     (*

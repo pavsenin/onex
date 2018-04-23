@@ -8,6 +8,7 @@ open System.Net
 open System.Text
 
 module Onex =
+    open System.Security
 
     let leagues =
         [
@@ -49,20 +50,40 @@ module Onex =
 
     let toBetType param _type =
         let toBet v = map (fun f -> v f) UnBet
+        let tryGetScore = function
+            | None -> Sc 0.0
+            | Some p ->
+                let s1 = round p
+                let s2 = ((p - s1) * 1000.0) |> round
+                if s1 <= 7.0 && s2 <= 7.0 && (s1 + s2) <= 9.0 then Sc p
+                else UnBet
         match _type with
         | 1 -> P1 | 2 -> X | 3 -> P2
         | 4 -> D1X | 5 -> D12 | 6 -> DX2
+        | 7 -> toBet H1 param | 8 -> toBet H2 param
         | 9 -> toBet TG param | 10 -> toBet TL param
         | 11 -> toBet IT1G param | 12 -> toBet IT1L param
         | 13 -> toBet IT2G param | 14 -> toBet IT2L param
+        | 518 -> PenY | 519 -> PenN
+        | 520 -> RemY | 521 -> RemN
+        | 731 -> tryGetScore param
+        | 3827 -> toBet ATG param | 3828 -> toBet ATL param
+        | 3829 -> toBet AH1 param | 3830 -> toBet AH2 param
         | _ -> UnBet
 
     let toGameType _type =
         match _type with
-        | 1 -> X12 | 2 -> DX12
+        | 1 -> X12
+        | 2 -> DX12
+        | 3 -> Handicap
         | 4 -> Total
         | 5 -> IndTotal1
         | 6 -> IndTotal2
+        | 33 -> Score
+        | 66 -> Penalty
+        | 67 -> Removal
+        | 1007 -> AsiaTotal
+        | 1008 -> AsiaHandicap
         | _ -> UnGame
 
     let getBets (bet:JsonValue) =

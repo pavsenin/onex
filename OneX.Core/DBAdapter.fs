@@ -173,12 +173,24 @@ let toDBBet = function
     | D1X -> Some (4, None)
     | D12 -> Some (5, None)
     | DX2 -> Some (6, None)
+    | H1 param -> Some (7, Some param)
+    | H2 param -> Some (8, Some param)
     | TG param -> Some (9, Some param)
     | TL param -> Some (10, Some param)
     | IT1G param -> Some (11, Some param)
     | IT1L param -> Some (12, Some param)
     | IT2G param -> Some (13, Some param)
     | IT2L param -> Some (14, Some param)
+    | PenY -> Some (518, None)
+    | PenN -> Some (519, None)
+    | RemY -> Some (520, None)
+    | RemN -> Some (521, None)
+    | Sc param -> Some (731, Some param)
+    | ATG param -> Some (3827, Some param)
+    | ATL param -> Some (3828, Some param)
+    | AH1 param -> Some (3829, Some param)
+    | AH2 param -> Some (3830, Some param)
+
     | _ -> None
 
 let toDBMatch id (now:DateTime) games (teams, matches, bets) =

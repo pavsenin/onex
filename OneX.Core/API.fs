@@ -83,6 +83,6 @@ module API =
 
         connectionStrings.["Onex"] <- connectionString
 
-        //teams |> filterTeams |> insertNewTeams |> ignore
-        //matches |> insertNewMatches |> ignore
-        //bets |> insertNewBets |> ignore
+        teams |> filterTeams |> insertNewTeams |> ignore
+        matches |> insertNewMatches |> ignore
+        bets |> insertNewBets |> ignore
