@@ -7,8 +7,10 @@ CREATE TABLE BetTypes
 )
 GO
 INSERT INTO BetTypes (ID, BetType) VALUES
-  (1, 'Win1'), (2, 'Draw'), (3, 'Win2'), (4, 'Win1+Draw'), (5, 'Win1+Win2'), (6, 'Draw+Win2'),
-  (9, 'TotalGreat'), (10, 'TotalLess'), (11, 'IndTotal1Great'), (12, 'IndTotal1Less'), (13, 'IndTotal2Great'), (14, 'IndTotal2Less')
+  (1, 'Win1'), (2, 'Draw'), (3, 'Win2'), (4, 'Win1+Draw'), (5, 'Win1+Win2'), (6, 'Draw+Win2'), (7, 'Handicap1'), (8, 'Handicap2'),
+  (9, 'TotalGreat'), (10, 'TotalLess'), (11, 'IndTotal1Great'), (12, 'IndTotal1Less'), (13, 'IndTotal2Great'), (14, 'IndTotal2Less'),
+  (518, 'PenaltyYes'), (519, 'PenaltyNo'), (520, 'RemovalYes'), (521, 'RemovalNo'), (731, 'Score'), (3827, 'AsiaTotalGreat'),
+  (3828, 'AsiaTotalLess'), (3829, 'AsiaHandicap1'), (3830, 'AsiaHandicap2')
 GO
 DROP TABLE IF EXISTS Leagues
 GO
